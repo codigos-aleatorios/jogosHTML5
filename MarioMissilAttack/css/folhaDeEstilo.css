@@ -63,6 +63,7 @@ body{
 #imgInicio{
     text-align: center;
     margin: 30px;
+    display: none;
 
 }#imgInicio img{cursor:pointer;}
 #telaDoJogo{
