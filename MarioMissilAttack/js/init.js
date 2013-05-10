@@ -41,6 +41,38 @@
             onCarregouTodos: function(tempoTotalParaCarregar, carregouTodosComSucesso) {
                 document.querySelector("#carregando").style.display = "none";
                 console.log("CARREGOU TODOS RECURSOS em " + tempoTotalParaCarregar + "ms   SITUACAO:" + ((carregouTodosComSucesso) ? "SUCESSO" : "ERRO"));
+
+                document.querySelector("#imgInicio").style.display = "block";
+                document.querySelector("#imgInicio").addEventListener("click", function() {
+                    document.querySelector("#imgInicio").style.display = "none";
+                    document.querySelector("#jogoCanvas").style.display = "block";
+                    document.querySelector("#btnPause").addEventListener("click", function() {
+                        if (!Jogo.pausado) {
+                            this.innerHTML = "Start";
+                            Jogo.pause();
+                        } else {
+                            this.innerHTML = "Pause";
+                            Jogo.resume();
+                        }
+                    }, false);
+                    var v = 0;
+                    document.querySelector("#btnAudio").addEventListener("click", function() {
+                        if (v === 0) {
+                            v = 100;
+                            this.innerHTML = "Sem Audio";
+                        } else {
+                            v = 0;
+                            this.innerHTML = "Com Audio";
+                        }
+                        ElementoAudio.volume(v);
+                    }, false);
+
+
+
+
+                    Jogo.init(new Teclado());
+                }, false);
+
                 document.querySelector("#btnEscala").addEventListener("change", function() {
                     if (isNaN(parseFloat(this.value))) {
                         return;
@@ -50,7 +82,7 @@
                 }, false);
 
 
-                Jogo.init(new Teclado());
+
             }
         });
     });

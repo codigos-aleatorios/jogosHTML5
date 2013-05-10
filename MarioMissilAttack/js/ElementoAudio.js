@@ -38,6 +38,16 @@ var ElementoAudio = (function() {
         _vetEstaTocando = [];
     };
 
+    ElementoAudio.volume = function(volume) {
+
+        for (var i = 0; i < _vetAudio.length; i++) {
+
+
+            _vetAudio[i].volume = volume / 100;
+
+
+        }
+    };
     return ElementoAudio;
 })();
 

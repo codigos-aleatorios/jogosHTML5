@@ -1,85 +1,122 @@
 *{
-	margin:0;
-	padding:0;
-	font-family: Tahoma;
+    margin:0;
+    padding:0;
+    font-family: Tahoma;
 }
 
 body{
-	background-image: url("../img/logo-html5.png");
+    background-color:#333;
+    /*  background-image: url("../img/logo-html5.png");*/
 }
 
 .insideCenter{
-	text-align:center;
+    text-align:center;
 }
 .selfCenter{
-	margin: 0 auto;
+    margin: 0 auto;
+}
+#botoesControle{padding:10px;  
+                background-color: #fafafa;
+
+}
+#divDir{    
+    position: absolute;
+    right: 0;
+    top: 0;
+    width:300px;
+
+}
+.ranking{padding:10px;  
+         margin-bottom: 20px;
+         border: 1px solid #000;
+         background-color: #fafafa;
+}
+#jogoCanvas{
+    display: none;
+    position: relative;
+
+}
+.devPor{
+    background-color:#fff;
+    padding:10px;
 }
 #bordasTelaDoJogo{
-	display:inline-block;
-	
-	padding:40px;
-	margin: 10px 50px;
-	
-	background-color:#000;
-	
-	border:1px solid #222;
-	border-radius: 20px;
-	
-	box-shadow: 10px 10px 5px #555;
-	
+    display:inline-block;
+
+    padding:14px;
+    margin: 10px 10px;
+
+    background-color:#000;
+
+    border:1px solid #222;
+    border-radius: 5px;	
+    box-shadow: 3px 3px 2px #555;
+
 }
+
+#botoesControle button{
+    padding: 10px;
+    font-size:20px;
+    margin-top: 10px;
+
+}
+#imgInicio{
+    text-align: center;
+    margin: 30px;
+
+}#imgInicio img{cursor:pointer;}
 #telaDoJogo{
-	background-color:#222;
-	padding:0 10px;
+    background-color:#222;
+    padding:0px;
 
 }
 
 #canvasDoJogo{
-	background-color:rgb(0 , 100,184);
-	border : 1px solid #000;
-	margin:5px;
+    background-color:rgb(0 , 100,184);
+    border : 1px solid #000;
+    margin:5px;
 }
 
 #instrucoes{
-	width: 100%;
-	
-	padding: 10px;
-	
-	background-color:#000;
-	
+    width: 100%;
+
+    padding: 10px;
+
+    background-color:#000;
+
 }
 #instrucoes section{
-	margin:10px auto;
-	padding:10px;
-	
-	width: 70%;
+    margin:10px auto;
+    padding:10px;
 
-	border-radius: 5px;
-	
-	background-color: #fff;
+    width: 70%;
+
+    border-radius: 5px;
+
+    background-color: #fff;
 }
 #instrucoes section h2{
-	margin:0 0 10px 10px;
-	
-	color: #a00;
-	
-	font-size:12pt;
-	
-	text-align: left;
+    margin:0 0 10px 10px;
+
+    color: #a00;
+
+    font-size:12pt;
+
+    text-align: left;
 }
 #instrucoes section p{
-	font-size:10pt;
-	
-	text-align: justify;
-	
-	margin-bottom:20px;
+    font-size:10pt;
+
+    text-align: justify;
+
+    margin-bottom:20px;
 }
 #instrucoes section p b{
-	color:#00a;
+    color:#00a;
 }
 
 #carregando{
-	width: 0;
-	height: 20px;
-	background-color: #00ff00;
+    width: 0;
+    height: 20px;
+    background-color: #00ff00;
 }

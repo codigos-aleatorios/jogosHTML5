@@ -42,18 +42,42 @@ Desenvolvido por:
     <body>
         <div id="carregando"></div>
 
-        <div class="insideCenter">
-            <div id="bordasTelaDoJogo" class="selfCenter">
-                <div id="telaDoJogo" class="insideCenter">
-                    <canvas id="canvasDoJogo"  class="selfCenter"></canvas>
-                </div>	
-            </div>
-        </div>	
-        Escala: <input type="range"  value="2" step="0.1"   min=".3" max="5" id="btnEscala"/>  <label id="escalaTexto">2</label><br />
-        <div>
-            <span>Maior Pontuação: </span><span id="maiorPontuacao"></span>
+
+        <div  id="imgInicio">
+            <img src="img/splash.jpg"  />
+
         </div>
-        <div>
+
+        <div id="jogoCanvas"  >
+            <div class="insideCenter" style="float:left">
+                <div id="bordasTelaDoJogo" class="selfCenter">
+                    <div id="telaDoJogo" class="insideCenter">
+                        <canvas id="canvasDoJogo"  class="selfCenter"></canvas>
+                    </div>	
+                </div>
+            </div>
+            <div  id="divDir">
+                <div class="ranking"  >
+                    <span>Maior Pontuação: </span><span id="maiorPontuacao"></span>
+                </div>
+
+                <div  id="botoesControle">
+                    Escala: <input type="range"  value="2" step="0.1"   min=".3" max="5" id="btnEscala"/>  <label id="escalaTexto">2</label><br />            
+                   
+                    <button  id="btnPause"    >PAUSE</button> 
+                     <button  id="btnAudio"    >Sem Audio</button><br />
+                   
+                </div>
+            </div>
+            <div style="clear: both"></div>
+
+        </div>
+
+
+
+
+
+        <div class="devPor">
             Desenvolvido por:
             <br />
 
