@@ -1,4 +1,4 @@
-jogosHTML5
+INTRODUÇÃO AO DESENVOLVIMENTO DE JOGOS COM HTML5
 ==========
 
 Conteúdo INTRODUÇÃO AO DESENVOLVIMENTO DE JOGOS COM HTML5 
@@ -11,4 +11,4 @@ Victor Hugo de Paiva Gonçales / @victorvhpg
 
 
 
-Todo o conteúdo  de 'INTRODUÇÃO AO DESENVOLVIMENTO DE JOGOS COM HTML5' foi desenvolvido para fins educacionais
+Todo o conteúdo  de 'INTRODUÇÃO AO DESENVOLVIMENTO DE JOGOS COM HTML5' foi desenvolvido para fins educacionais 
