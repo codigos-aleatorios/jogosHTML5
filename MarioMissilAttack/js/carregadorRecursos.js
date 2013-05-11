@@ -1,4 +1,4 @@
-﻿/**
+/**
  *  Heberth Jorge Feres / @fereshj  
  *  Victor Hugo de Paiva Goncales / @victorvhpg  
  */
