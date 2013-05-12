@@ -139,18 +139,21 @@
 
                     <h2>Conteúdo Programático</h2>
                     <ul style="font-size:32px;line-height:34px;">
-                        <li > Introdução ao HTML5  </li>
-                        <li > Introdução ao JavaScript </li>
+                        <li > HTML5  </li>
+                        <li > JavaScript </li>
                         <li > O elemento Canvas </li>
-
                         <li > O elemento Áudio </li>
                         <li > Entrada de usuário </li>
-                        <li > Jogos HTML5 </li>
-                        <li > Imagens Sprite </li>
-                        <li > Ciclo de execução de um jogo. </li>
-                        <li > Construção do cenário </li>
-                        <li > Movimentando um personagem no Canvas </li>
-                        <li > Colisões </li>
+                        <li > Jogos. Técnicas e Conceitos 
+							<ul>
+								<li > Sprite </li>
+								<li > Animação </li>
+								<li > Colisão </li>
+								<li > Cenário </li>
+							</ul>
+						</li>
+                        
+						<li > Movimentando um personagem no Canvas </li>                        
                         <li > Implementando áudio no jogo </li>
                         <li > Implementando um jogo 2D básico. </li>
                         <li > Exemplos de jogos desenvolvidos com HTML5 </li>
@@ -162,7 +165,7 @@
 
                 <section>
                     <section>
-                        <h2>Introdução ao HTML5</h2>
+                        <h2>HTML5</h2>
 
                         <p>
 
@@ -200,7 +203,7 @@
 
                 <!--  ############################################################################## -->
                 <section>
-                    <h2>Introdução ao JavaScript</h2>
+                    <h2>JavaScript</h2>
                     <p>
                         Javascript é uma linguagem de programação de tipagem dinâmica baseado em protótipos, originalmente implementada para navegadores web, mas atualmente está vários ambientes por exemplo:  servidores(Node.js), sistemas Operacionais(Firefox OS), entre outros.
                         Nos navegadores o javascript manipula os elementos HTML usando DOM.
@@ -554,32 +557,19 @@ console.log(coordenada.pageX) ;
 
 
                 <section>
-                    <h2> JOGOS</h2> 
+                    <h2> Jogos - Conceitos e Técnicas</h2> 
                     <img src="img/mario.png"   /> 
-                </section>
-
-                <section>
-                    <h2> Conceitos e técnicas</h2> 
-                    <ul class="fragment">
-
-                        <li>Sprite</li>
-                        <li>Animação</li>
-                        <li>Colisão</li>
-                        <li>cccc</li>
-
-                    </ul>
                 </section>
 
 				<section>
 					<section>
-						<h2>Sprite</h2> 
-						<img src="img/sprite1.jpg" >
+						<h2>Sprite</h2>
 					</section>
 
 					<section>
 						<h2>O que são?</h2> 
 						<p>
-							Sprites são os elementos gráficos que serão exibidos na tela do jogo. Esses elementos representão perssonagens, inimigos, itens,
+							Sprites são os elementos gráficos que serão exibidos na tela do jogo. Esses elementos representam personagens, inimigos, itens,
 							cenarios, etc...
 						</p>
 					</section>
@@ -592,10 +582,10 @@ console.log(coordenada.pageX) ;
 					</section>
 					
 					<section>
-						<h2>Folha de Sprite</h2> 
+						<h2>Folha de Sprites</h2> 
 						<img src="img/sprite2.jpg" >
 						<p>
-							Esta imagem é uma folha de sprites, ela representa o conjunto de sprites necessárias para representar vizualmente o caminhar do perssonagem (O Máscara).
+							Esta imagem é uma folha de sprites, ela representa o conjunto de sprites necessárias para representar visualmente o caminhar do personagem (O Máscara).
 						</p>
 					</section>
 				</section>
@@ -608,7 +598,7 @@ console.log(coordenada.pageX) ;
 						<h2>Animação</h2> 
 						<p>
 							Uma animação é uma ilusão resultante da troca de imagens em uma velocidade pré determinada. Essa velocidade é representada por
-							FPS (Frames Por Segundos) ou quantas trocas de imagens ocorrerá em um segundo. Para um jogo, considera-se aceitavel uma taxa entre
+							FPS (Frames Por Segundos) ou quantas vezes a imagem (canvas) será redensenhada em um segundo. Para um jogo, considera-se aceitavel uma taxa entre
 							30 e 60 fps.
 						</p>
 					</section>
@@ -670,13 +660,13 @@ frames[1].altura= 30;
 					<section>
 						<h2>Animação</h2>
 						<p>
-							Tendo a folha de sprites mapeada, a cada troca de frames saberemos qual posisão da folha renderizar no canvas com o método
+							Tendo a folha de sprites mapeada, a cada troca de frames saberemos qual posição da folha renderizar no canvas com o método
 							drawImage():
 						</p>
 <pre>
 	<code>
-for(var i= 0; i < frames.length; i++){
-	ctx.drawImage(folhaSprites, frames[1].x, frames[i].y,
+	
+	ctx.drawImage(folhaSprites, frames[indiceAtual].x, frames[i].y,
 				frames[i].largura, farmes[i].altura,
 				200, 200);
 }
@@ -707,13 +697,19 @@ for(var i= 0; i < frames.length; i++){
 							<li class="fragment">Quando o Mario "encosta" numa parede. Ele é impedido de andar.</li>
 						</ul>
 					</section>
+					<section>
+						<h2>Colisão</h2>
+						<img src="img/colisao1.jpg"/>
+					</section>
 				</section>
 
 
                 <section>
-
+					<section>
+                        <h2> Cenário</h2> 
+					</section>	
                     <section>
-                        <h2> Cenários</h2> 
+                        <h2> Cenário</h2> 
                         <p>
 
                             Uma das técnicas para construir cenários é a técnica
@@ -736,18 +732,18 @@ for(var i= 0; i < frames.length; i++){
                     </section>
 
                     <section>
-                        <h2> Cenários</h2> 
+                        <h2> Cenário</h2> 
                         <h3>Exemplo de uma imagem 'tile map'</h3>
                         <img src="img/tilemap.png" style='height: 400px'  /> 
                     </section>
 
                     <section>
-                        <h2> Cenários</h2> 
+                        <h2> Cenário</h2> 
                         <h3>Identificando as 'células'</h3>
                         <img src="img/tilemap2.png" style='height: 400px'  /> 
                     </section>
                     <section>
-                        <h2> Cenários</h2> 
+                        <h2> Cenário</h2> 
 						
                         <h3>Montando o cenário</h3>
 						<pre><code>//id da célula -1 não desenha						
