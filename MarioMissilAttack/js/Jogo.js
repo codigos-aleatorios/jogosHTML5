@@ -4,8 +4,7 @@
  */
 var Jogo = (function(MarioVoador, Sprite, Explosao, GLOBAIS, Inimigo, Fundo, carregadorRecursos, Item, ElementoAudio) {
     "use strict";
-
-    //	alert("som no ie e o opera da dois play -----  corrigir ,moeda  scorpion");
+ 
     return {
         telaDeInicio: true,
         nivel: 1,
@@ -16,16 +15,11 @@ var Jogo = (function(MarioVoador, Sprite, Explosao, GLOBAIS, Inimigo, Fundo, car
         recursos: null,
         ElementoAudio: null,
         Comportamento: null,
-        //  escala: 2,
-        // LARGURA_CANVAS: 900,
-        //ALTURA_CANVAS: 600,
         canvas: null,
         ctx: null,
         pontos: 0,
-        //tempo: 0,
         fps: 60, //inicial
         ultimoLoop: 0, //tempo
-
         itens: [],
         explosoes: [],
         inimigos: [],
@@ -38,7 +32,6 @@ var Jogo = (function(MarioVoador, Sprite, Explosao, GLOBAIS, Inimigo, Fundo, car
             if (this.nivel === 4) {
                 if (this.ultimoInimigoTiroCanhaoGigante === 0 || (agora - this.ultimoInimigoTiroCanhaoGigante) >= 5000) {
                     this.ultimoInimigoTiroCanhaoGigante = agora;
-
                     var ini = Inimigo.criaInimigoBalaDeCanhaoGigante(MarioVoador);
                     ini.sons.tiroCanhao.play();
                     this.inimigos.push(ini);
@@ -70,15 +63,12 @@ var Jogo = (function(MarioVoador, Sprite, Explosao, GLOBAIS, Inimigo, Fundo, car
         },
         inicializarEntidades: function() {
             this.atualizaRankHtml();
-
-
+            MarioVoador.init(this);
             Fundo.init();
 
             //
         },
         iniciarJogo: function() {
-
-            MarioVoador.init(this);
             this.telaDeInicio = false;
             Fundo.sprite.setDirecao(Sprite.DIRECAO.ESQUERDA);
             Fundo.sprite.setComportamentoAtual(Fundo.sprite.comportamentos.movimentando);
@@ -91,6 +81,7 @@ var Jogo = (function(MarioVoador, Sprite, Explosao, GLOBAIS, Inimigo, Fundo, car
             if (this.pontos > maiorPontuacao) {
                 localStorage.setItem("rank", this.pontos);
                 this.pause();
+				//falta criar um modal para o canvas
                 alert("Parabéns! você conseguiu a maior pontuação!");
                 this.resume();
             }
@@ -102,7 +93,7 @@ var Jogo = (function(MarioVoador, Sprite, Explosao, GLOBAIS, Inimigo, Fundo, car
             this.tiros = [];
             this.explosoes = [];
             this.gameOver = false;
-            //this.inicializarEntidades();
+ 
             this.atualizaRankHtml();
 
             MarioVoador.reset();
