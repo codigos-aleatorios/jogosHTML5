@@ -1,0 +1,90 @@
+<!--
+Desenvolvido por:
+  Heberth Jorge Feres / @fereshj  
+  Victor Hugo de Paiva Goncales / @victorvhpg 
+
+ 
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta  charset="utf-8">
+        <title>jogo </title>
+        <link rel="stylesheet" type="text/css" href="css/folhaDeEstilo.css" >
+
+        <script src="js/log.js"></script>
+        <script src="js/requestAnimationFrame.js"></script>
+
+        <script src="js/Util.js"></script>
+        <script src="js/GLOBAIS.js"></script>
+        <script src="js/Comportamento.js"></script>
+        <script src="js/ElementoAudio.js"></script>
+        <script src="js/carregadorRecursos.js"></script>
+        <script src="js/Teclado.js"></script>
+
+
+
+
+
+        <script src="js/Sprite.js"></script>
+        <script src="js/MarioVoador.js"></script>
+        <script src="js/Inimigo.js"></script>
+        <script src="js/Item.js"></script>
+        <script src="js/Explosao.js"></script>
+        <script src="js/Fundo.js"></script>
+        <script src="js/Jogo.js"></script>
+
+        <script src="js/init.js"></script>
+
+
+
+    </head>
+    <body>
+        <div id="carregando"></div>
+
+
+        <div  id="imgInicio">
+            <img src="img/splash.jpg"  />
+
+        </div>
+
+        <div id="jogoCanvas"  >
+            <div class="insideCenter" style="float:left">
+                <div id="bordasTelaDoJogo" class="selfCenter">
+                    <div id="telaDoJogo" class="insideCenter">
+                        <canvas id="canvasDoJogo"  class="selfCenter"></canvas>
+                    </div>	
+                </div>
+            </div>
+            <div  id="divDir">
+                <div class="ranking"  >
+                    <span>Maior Pontuação: </span><span id="maiorPontuacao"></span>
+                </div>
+
+                <div  id="botoesControle">
+                    Escala: <input type="range"  value="2" step="0.1"   min=".3" max="5" id="btnEscala"/>  <label id="escalaTexto">2</label><br />            
+                   
+                    <button  id="btnPause"    >PAUSE</button> 
+                     <button  id="btnAudio"    >Sem Audio</button><br />
+                   
+                </div>
+            </div>
+            <div style="clear: both"></div>
+
+        </div>
+
+
+
+
+
+        <div class="devPor">
+            Desenvolvido por:
+            <br />
+
+            Heberth Jorge Feres / @fereshj    <br />
+            Victor Hugo de Paiva Goncales / @victorvhpg  
+
+
+        </div>
+    </body>
+</html>

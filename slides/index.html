@@ -1,0 +1,1047 @@
+﻿<!doctype html>
+<html lang="pt-br">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>Introdução ao desenvolvimento de jogos com HTML5</title>
+
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="css/reveal.min.css">
+        <link rel="stylesheet" href="css/theme/default.css" id="theme">
+        <script>
+
+            var tempo = {
+                tInicio: 0,
+                tFim: 0,
+                container: null,
+                getDigitos: function(t) {
+                    return (t > 9) ? t : "0" + t;
+                },
+                getTempo: function(t1, t2) {
+                    var dif = Math.abs(t1 - t2);
+                    return {
+                        h: parseInt(dif / (1000 * 60 * 60)),
+                        m: parseInt((dif / (1000 * 60)) % 60),
+                        s: parseInt((dif / 1000) % 60)
+                    }
+                },
+                atualiza: function(t1, t2) {
+                    var tp = this.getTempo(Date.now(), this.tInicio);
+                    var tf = this.getTempo(this.tFim, Date.now());
+                    var passou = this.getDigitos(tp.h) + ":" + this.getDigitos(tp.m) + ":" + this.getDigitos(tp.s);
+                    var falta = this.getDigitos(tf.h) + ":" + this.getDigitos(tf.m) + ":" + this.getDigitos(tf.s);
+                    this.container.innerHTML = passou + "<br />" + falta;
+                },
+                init: function(c) {
+                    var that = this;
+                    this.tInicio = c.tInicio;
+                    this.tFim = c.tFim;
+                    this.container = c.container;
+                    window.setInterval(function() {
+                        that.atualiza();
+                    }, 1000);
+
+                }
+            };
+            window.addEventListener("DOMContentLoaded", function() {
+                tempo.init({
+                    tInicio: Date.now(), ////new Date(2013,4,13,19,0,0).getTime()
+                    tFim: Date.now() + ((1000 * 60 * 60) * 3.5), // new Date(2013,4,13,22,30,0).getTime(),
+                    container: document.querySelector("#tempoHTML")
+                });
+
+            }, false);
+
+        </script>
+
+        <link rel="stylesheet" href="lib/css/zenburn.css">
+        <style>
+            .tabelas td,.tabelas th{
+                padding:3px;
+                border:1px solid #777;
+            }
+            @font-face {
+                font-family: 'bitFont';
+                font-style: normal;
+                font-weight: 400;
+                src: local('bitFont-Light'), local('bitFont-Regular'), url(css/pressstart2p.woff) format('woff');
+            }
+            .font8Bit{
+                font-family : 'bitFont', Arial !important;
+            }
+            h2,h1{
+                font-family : 'bitFont', Arial !important;
+
+            }
+            h1{
+                font-size:55px !important;line-height:75px !important;
+            }
+            h2{
+                font-size:40px !important;line-height:48px !important;
+            }
+            #tempoHTML{font-size:12px;
+                       position:absolute;
+                       top:0;
+                       left:0;
+                       z-index:999999;
+            }
+            p{
+                text-align:justify;
+            }
+        </style>
+
+        <script>
+            document.write('<link rel="stylesheet" href="css/print/' + (window.location.search.match(/print-pdf/gi) ? 'pdf' : 'paper') + '.css" type="text/css" media="print">');
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+
+        <div class="reveal">
+            <div id="tempoHTML"></div>
+            <div class='font8Bit' style="font-size:15px;padding:5px;text-align:right"> <a target="_blank" href="http://git.io/HTML5jogos">http://git.io/HTML5jogos</a></div>
+            <div class="slides">
+                <!--  ############################################################################## -->
+                <section >
+                    <h1  >Introdução ao desenvolvimento de jogos com HTML5</h1>
+                    <h3>INFOESTE 2013</h3>
+                    <p style="text-align:left">
+                        <strong>Instrutores:</strong> <br />
+
+                        Heberth Jorge Feres / <a href="http://twitter.com/fereshj">@fereshj</a>
+                        <br />
+
+                        Victor Hugo de Paiva Gonçales / <a href="http://twitter.com/victorvhpg">@victorvhpg</a>
+
+                    </p>
+                </section>
+
+                <section>
+                    <h2>Introdução</h2>
+                    <p>
+                        O HTML5 permite desenvolvimento de jogos e aplicações de forma acessível, livre e multiplataforma. Presente em diversos dispositivos como Tablets, Smartphones, Smart Tvs e etc, é uma tecnologia livre, de fácil aprendizado, possui incentivos pelas grandes empresas de tecnologia e é tudo gratuito e padronizado.
+                        Graças aos recursos oferecidos pelo HTML5, atualmente podemos criar jogos multiplataforma com muitos recursos sem a necessidade de plugins.
+                        Neste curso será apresentado conceitos e técnicas básicas de desenvolvimento de jogos 2D utilizando HTML5. Após os conceitos será implementado um exemplo básico de jogo 2D.
+                    </p>
+
+                </section>
+
+                <!--  ############################################################################## -->
+                <section>
+
+
+                    <h2>Conteúdo Programático</h2>
+                    <ul style="font-size:32px;line-height:34px;">
+                        <li > HTML5  </li>
+                        <li > JavaScript </li>
+                        <li > O elemento Canvas </li>
+                        <li > O elemento Áudio </li>
+                        <li > Local Storage </li>
+                        <li > Entrada de usuário </li>
+                        <li > Jogos. Técnicas e Conceitos 
+                            <ul>
+                                <li > Sprite </li>
+                                <li > Animação </li>
+                                <li > Colisão </li>
+                                <li > Cenário </li>
+                                <li > Frames Por Segundo </li>
+                                <li > Movimentação Baseada em FPS </li>
+                                <li > Game Loop </li> 
+                            </ul>
+                        </li>
+
+                        <li > Exemplos de jogos desenvolvidos com HTML5 </li>
+                    </ul>
+                </section>
+
+                <!--  ############################################################################## -->
+
+
+                <section>
+                    <section>
+                        <h2>HTML5</h2>
+
+                        <p>
+
+                            O HTML é uma linguagem de marcação  para apresentação de conteúdo WEB.Atualmente o HTML se encontra na versão 5,
+                            nela foi adicionado mais tags semánticas(header,nav,footer, section e etc),e outras novas tags, vários recursos interessantes que antes só era possível com ajuda de plugins proprietários.
+                            Estes recursos implementam suporte à conteúdo multimídia (áudio e vídeo), manipulação de imagens bitmap(canvas) e imagens vetoriais (SVG), aplimoramento offline, Websockets entre outras coisas.
+
+                        </p>
+
+                    </section>
+
+                    <section>
+                        <h2>Estrutura básica </h2>
+                        <pre>
+<code>
+&lt;!doctype html&gt;
+&lt;html lang="pt-br"&gt;
+    &lt;head&gt;
+        &lt;meta charset="utf-8"&gt;
+		&lt;title&gt;teste b&lt;/title&gt;
+	&lt;/head&gt;
+	&lt;body&gt;  olá mundo &lt;/body&gt;
+&lt;/html&gt;
+</code>
+
+
+                        </pre>
+
+                    </section>
+
+
+                </section>
+                <!--  ############################################################################## -->
+
+
+                <!--  ############################################################################## -->
+                <section>
+                    <h2>JavaScript</h2>
+                    <p>
+                        Javascript é uma linguagem de programação de tipagem dinâmica baseado em protótipos, originalmente implementada para navegadores web, mas atualmente está vários ambientes por exemplo:  servidores(Node.js), sistemas Operacionais(Firefox OS), entre outros.
+                        Nos navegadores o javascript manipula os elementos HTML usando DOM.
+
+                    </p>
+                </section>
+                <!--  ############################################################################## -->
+
+
+                <!--  ############################################################################## -->
+                <section>              
+                    <section>
+                        <h2>O elemento Canvas</h2>
+                        <p>
+                            O canvas é uma tela bitmap que permite manipulação de imagens, gráficos, retas, textos.Um canvas é um retângulo em sua página no qual você pode utilizar javascript para desenhar o que quizer.
+
+                        </p>
+                    </section>
+                    <section>
+                        <h2>Canvas</h2>
+                        <h3>Compatibilidade</h3>
+                        <img src="img/suportecanvas.png" style='height: 400px'  /> 
+
+
+                    </section>
+
+
+                    <section>
+                        <h2>Sistemas de Coordenadas</h2>
+                        <p>
+                            As coordenadas de um canvas começam em x=0, y=0 no canto superior esquerdo, e aumenta(em pixels) horizontalmente no eixo x e verticalmente no eixo y<br />
+
+                        </p>
+
+                        <div style="text-algin:center">
+                            <img src="img/canvas1.jpg"   />
+                        </div>
+                    </section>
+
+                    <section>
+                        <h2>Adicionando o Canvas na página</h2>
+                        <p>
+                            Para adicionar o canvas use a tag <i>&lt;canvas&gt;</i>
+                        </p>
+                        <pre >
+						<code data-trim>
+							<canvas id="meuCanvas" width="600" height="400"></canvas>
+						</code>						
+                        </pre>
+                    </section>
+
+                    <section>
+                        <h2>Desenhando no canvas</h2>
+                        <p>
+                            Para começar a desenhar nos devemos usar o contexto do canvas que é obtido desta forma:
+                        </p>
+                        <pre >
+						<code data-trim>
+var meuCanvas = document.querySelector("#meuCanvas");
+var ctx = meuCanvas.getContext("2d");
+						</code>						
+                        </pre>
+                    </section>
+
+                    <section>
+                        <h2>Desenhando no canvas</h2>
+                        <h3>linhas</h3>
+                        <p>
+
+                        </p>
+                        <pre >
+						<code data-trim>
+ctx.beginPath();
+ctx.moveTo(20,20);
+ctx.lineTo(20,100);
+ctx.lineTo(70,100);
+ctx.closePath();
+ctx.stroke();
+						</code>						
+                        </pre>
+                        <div style="background-color:#fff;display:inline-block;">
+                            <img src="img/canvas2.png"   /></div>
+                    </section>
+
+
+                    <section>
+                        <h2>Desenhando no canvas</h2>
+                        <h3>Formas</h3>
+                        <p>
+
+                        </p>
+                        <pre >
+						<code data-trim>
+ctx.rect(20,20,150,100);
+ctx.fillStyle="red";
+ctx.strokeStyle = "yellow";
+ctx.lineWidth=5;
+ctx.fill();
+ctx.stroke();
+
+						</code>						
+                        </pre>
+                        <div style="background-color:#fff;display:inline-block;">
+                            <img src="img/canvas3.png"   /></div>
+                    </section>
+
+
+                    <section>
+                        <h2>Desenhando no canvas</h2>
+                        <h3>Formas</h3>
+                        <p>
+
+                        </p>
+                        <pre >
+						<code data-trim>
+var raio = 50;
+var x =100;
+var y = 75;
+var anguloInicial = (Math.PI/180)*0;
+var anguloFinal = (Math.PI/180)*270;
+ctx.arc(x,y,raio,anguloInicial,anguloFinal) ;
+ctx.stroke();
+						
+						</code>						
+                        </pre>
+                        <div style="background-color:#fff;display:inline-block;">
+                            <img src="img/canvas4.png"   /></div>
+                    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <section>
+                        <h2>Desenhando no canvas</h2>
+
+
+                        <pre >
+						<code data-trim>
+
+var imgDOM = new Image();
+imgDOM.onload = function(){
+	ctx.drawImage(imgDOM, dx, dy);
+	ctx.drawImage(imgDOM, dx, dy, dw, dh);
+	ctx.drawImage(imgDOM, sx, sy, sw, sh, dx, dy, dw, dh);
+};
+imgDOM.src = 'imagem.jpg';					
+
+						</code>						
+                        </pre>
+                        <div style="background-color:#fff;display:inline-block;">
+                            <img  style="height:350px" src="img/canvas5.png"   /></div>
+                    </section>
+
+                    <section>
+                        <h2> Referências Canvas</h2>
+                        <div style="font-size:21px">
+                            <ul>
+                                <li><a  href="https://developer.mozilla.org/en-US/docs/HTML/Canvas/Tutorial">Mozilla </a></li>
+                                <li><a  href="http://www.w3schools.com/tags/ref_canvas.asp">w3schools </a></li>
+                                <li><a  href="http://www.w3.org/TR/2dcontext/">W3C </a></li>
+                                <li><a  href="http://www.html5canvastutorials.com/">html5canvastutorials </a></li>
+
+                            </ul>
+
+                        </div>
+                    </section>
+                </section>
+                <!--  ############################################################################## -->
+                <section>
+
+                    <!--  ############################################################################## -->
+                    <section>
+                        <h2> O elemento Áudio</h2>
+                        <p>Para usar o audio use a tag &lt;audio&gt; </p>
+                        <pre >
+<code data-trim>
+&lt;audio src="audio.ogg"&gt;&lt;/audio&gt;
+</code>						
+                        </pre>
+
+                    </section>
+                    <section>
+                        <h2> Métodos</h2>
+                        <table class="tabelas">
+                            <tbody> 
+
+                                <tr>
+                                    <td> canPlayType() </td>
+                                    <td>Verifica se o navegador suporta o formato de audio</td>
+                                </tr>
+                                <tr>
+                                    <td> load() </td>
+                                    <td>Recarrega o elemento audio</td>
+                                </tr>
+                                <tr>
+                                    <td> play() </td>
+                                    <td>Inicia o audio</td>
+                                </tr>
+                                <tr>
+                                    <td> pause() </td>
+                                    <td>Pausa o audio</td>
+                                </tr>
+                            </tbody></table>
+
+                    </section>
+
+                    <section>
+                        <h2>  Atributos</h2>
+                        <table class="tabelas">
+                            <tbody> 
+
+                                <tr>
+                                    <td> autoplay</td>
+                                    <td>O som inicia após carregamento</td>
+                                </tr>
+                                <tr>
+                                    <td> loop </td>
+                                    <td>som fica em loop</td>
+                                </tr>
+                                <tr>
+                                    <td> controls </td>
+                                    <td>mostra os controle</td>
+                                </tr>
+                                <tr>
+                                    <td> preload  </td>
+                                    <td>inicia carregamento</td>
+                                </tr>
+                            </tbody></table>
+
+                    </section>
+                    <section>
+                        <h2> Compatibilidade</h2>
+
+                        <img src="img/audio1.png"   /> 
+                    </section>
+
+
+                    <section>
+                        <h2> Referências Audio</h2>
+                        <div style="font-size:21px">
+                            <ul>
+                                <li><a  href="http://www.w3schools.com/tags/ref_av_dom.asp">Audio </a></li>
+
+
+
+                            </ul>
+
+                        </div>
+                    </section>
+
+
+                    <!--  ############################################################################## -->
+                </section>
+
+
+
+
+                <section>
+
+                    <section>
+                        <h2> Local Storage</h2>
+
+                        <p>
+                            Serve para armazenar dados no navegador, o localStorage fica disponível não expira ele só é removido via código ou se o cliente 
+                            excluir .
+                        </p>
+                        <pre><code>
+//guardar
+localStorage.setItem("pontos" , 123);
+//recuperar
+localStorage.getItem("pontos");///
+</code></pre>
+
+
+
+
+                    </section>
+
+
+
+
+                </section>
+
+
+
+                <section>
+
+                    <section>
+                        <h2> Entrada de usuário</h2>
+
+                        <p>
+                            Com javascript podemos capturar eventos de entrada do usuário,
+                            estes eventos podem ser de teclado, mouse e touch.
+                        </p>
+                        <h3>
+                            captura  de tecla  </h3>   
+                        <pre>   <code>   
+//e.which é o codigo da tecla            
+document.addEventListener("keydown",function(e){
+console(e.type + e.which) ;
+
+},false);
+document.addEventListener("keyup",function(e){
+
+console(e.type + e.which) ;
+
+},false);  
+document.addEventListener("keypress",function(e){
+
+console(e.type + e.which) ;
+
+},false);  </code>
+                        </pre>
+
+
+                    </section>
+
+                    <section>
+                        <h2> Entrada de usuário</h2>
+
+
+                        <h3>
+                            captura do mouse  </h3>   
+                        <pre>   
+
+<code>               
+document.addEventListener("NOME_DO_EVENTO",function(e){
+//coordernada x em relazação ao documento inteiro    
+console.log(e.pageX) ; 
+ //coordernada x em relazação janela do browser    
+console.log(e.clientX) ;
+ //coordernada x em relazação a tela (monitor)
+console.log(e.screenX) ;
+},false);
+//NOME_DO_EVENTO-> 
+//mousedown,mouseup,mousemove
+//mouseover,mouseout,click,dblclick
+
+   </code>
+                        </pre>
+
+
+                    </section>
+
+                    <section>
+                        <h2> Entrada de usuário</h2>
+
+
+                        <h3>
+                            captura de touch  </h3>   
+                        <pre>   
+
+<code>               
+document.addEventListener("NOME_DO_EVENTO",function(e){
+var coordenada = e.touches[0];
+console.log(coordenada.pageX) ; 
+
+},false);
+//NOME_DO_EVENTO-> 
+//touchstart  - equivalente mousedown
+//touchend  - equivalente mouseup
+//touchmove  - equivalente mousemove
+
+   </code>
+                        </pre>
+
+
+                    </section>
+
+                </section>
+
+
+
+
+
+                <section>
+                    <h2> Jogos - Conceitos e Técnicas</h2> 
+                    <img src="img/mario.png"   /> 
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Sprite</h2>
+                    </section>
+
+                    <section>
+                        <h2>O que são?</h2> 
+                        <p>
+                            Sprites são os elementos gráficos que serão exibidos na tela do jogo. Esses elementos representam personagens, inimigos, itens,
+                            cenarios, etc...
+                        </p>
+                    </section>
+
+                    <section>
+                        <h2>Folha de Sprites</h2> 
+                        <p>
+                            A folha de sprites é uma imagem contendo todas ou um conjunto de sprites.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h2>Folha de Sprites</h2> 
+                        <img src="img/sprite2.jpg" >
+                        <p>
+                            Esta imagem é uma folha de sprites, ela representa o conjunto de sprites necessárias para representar visualmente o caminhar do personagem (O Máscara).
+                        </p>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Animação</h2> 
+                    </section>
+
+                    <section>
+                        <h2>Animação</h2> 
+                        <p>
+                            Uma animação é uma ilusão resultante da troca de imagens em uma velocidade pré determinada. Essa velocidade é representada por
+                            FPS (Frames Por Segundos) ou quantas vezes a imagem (canvas) será redensenhada em um segundo. Para um jogo, considera-se aceitavel uma taxa entre
+                            30 e 60 fps.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h2>Animação</h2>
+                        <img src="img/sprite3.jpg" >
+                        <p>
+                            Para animar o caminhar de nosso personagem, devemos fazer as trocas de frames na seguinte sequência:</br>
+                            3, 4, 5, 6, 7, 8, 1, 2
+                        </p>
+                    </section>
+
+                    <section>
+                        <h2>Animação</h2>
+                        <p>
+                            Vimos que nossa folha de sprites é um conjunto de imagens, e que em cada troca deve ser exibido uma imagem por vez. Para isso iremos
+                            "mapear" nossa folha separando cada imagem.
+                        </p>
+                        <img src="img/sprite4.jpg" >
+                        <p>
+                            Como fazer isso?
+                        </p>
+                    </section>
+
+                    <section>
+                        <h2>Animação</h2>
+                        <p>
+                            Vamos dizer que cada sprite é um frame, para pegar um frame precisamos saber a posíção x e y na folha de sprites e a largura e altura
+                            do frame:
+                        </p>
+                        <img src="img/sprite5.jpg" >
+                        <p>
+                            Temos então assim:</br>
+                            x= 0, y= 0, largura= 20 e altura= 30
+                        </p>
+                    </section>
+                    <section>
+                        <h2>Animação</h2>
+                        <p>
+                            Nosso mapeamento ficará da seginte forma:
+                        </p>
+                        <pre>
+	<code>
+frames[0].x= 0;
+frames[0].y= 0;
+frames[0].largura= 20;
+frames[0].altura= 30;
+
+frames[1].x= 20;
+frames[1].y= 30;
+frames[1].largura= 20;
+frames[1].altura= 30;
+
+...
+	</code>
+                        </pre>	
+                    </section>
+                    <section>
+                        <h2>Animação</h2>
+                        <p>
+                            Tendo a folha de sprites mapeada, a cada troca de frames saberemos qual posição da folha renderizar no canvas com o método
+                            drawImage():
+                        </p>
+                        <pre>
+	<code>
+
+ctx.drawImage(folhaSprites, frames[indiceAtual].x, frames[i].y,
+frames[i].largura, farmes[i].altura,
+200, 200);
+
+	</code>
+                        </pre>	
+                    </section>
+                    <section>
+                        <h2>Animação de Sprite</h2>
+                        <img src="img/sprite6.jpg" />
+                    </section>
+
+                </section>
+
+
+
+                <section>
+                    <section>
+                        <h2>Colisão</h2>
+                    </section>
+
+                    <section>
+                        <h2>Colisão</h2>
+                        <p>
+                            Uma colisão acontece quando um objeto "tromba" em outro. Pensando em jogos, a colisão acontece quando objeto está na mesma posição
+                            x e y ocupada pelo outro objeto. Esse conceito é importante, talvez é o mais importante no funcionamento de um jogo.
+                        </p>
+                    </section>
+                    <section>
+                        <h2>Colisão</h2>
+                        <p>
+                            Quando acontece uma colisão em um jogo?
+                        </p>
+                        <ul>
+                            <li class="fragment">Quando o Mario "encosta" em um inimigo. Ele morre.</li>
+                            <li class="fragment">Quando o Mario "encosta" em um cogumelo. Ele cresce.</li>
+                            <li class="fragment">Quando o Mario "encosta" numa parede. Ele é impedido de andar.</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Colisão</h2>
+                        <img src="img/colisao1.jpg"/>
+                    </section>
+                </section>
+
+
+                <section>
+                    <section>
+                        <h2> Cenário</h2> 
+                    </section>	
+                    <section>
+                        <h2> Cenário</h2> 
+                        <p>
+
+                            Uma das técnicas para construir cenários é a técnica
+                            "Tile Maps", nela você tem uma imagem contendo todos as 'celulas'
+                            que o seu cenário pode ter. Logo para construir o seu cenário você deve 
+                            identificar todos estas células e montar seu cenário como se fosse um quebra-cabeça.
+                            Para construir podemos fazer o seguinte:
+                            construimos uma matriz que será o nosso cenário,
+                            cada indice desta matriz irá conter a identificação da 'célula'.
+
+
+
+
+
+                        </p>
+
+
+
+
+                    </section>
+
+                    <section>
+                        <h2> Cenário</h2> 
+                        <h3>Exemplo de uma imagem 'tile map'</h3>
+                        <img src="img/tilemap.png" style='height: 400px'  /> 
+                    </section>
+
+                    <section>
+                        <h2> Cenário</h2> 
+                        <h3>Identificando as 'células'</h3>
+                        <img src="img/tilemap2.png" style='height: 400px'  /> 
+                    </section>
+                    <section>
+                        <h2> Cenário</h2> 
+
+                        <h3>Montando o cenário</h3>
+                        <pre><code>//id da célula -1 não desenha						
+matCenario = [
+	[-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+	[-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+	[-1, -1, -1, -1, -1, 9, 10, 11, -1, -1],
+	[-1, -1, -1, -1, -1, 12, 13, 14, -1, -1],
+	[-1, -1, -1, -1, -1, 12, 13, 14, -1, -1],
+	[-1, -1, -1, -1, -1, 12, 13, 14, -1, -1],
+	[10, 10, 10, 10, 10, 10, 10, 10, 10, 10]
+];</code></pre>
+                        <div style="background-color:#fff;display:inline-block">
+                            <img  src="img/tilemap3.png" style='height: 200px'  /> 
+
+                        </div>
+                        <a style="font-size:17px" href="exemplos/exemplo_tile_map.html" target="_blank" >[ver exemplo] </a>
+                    </section>
+                </section>
+
+
+
+                <section>   <section> 
+                        <h2> requestAnimationFrame</h2> 
+
+                        <p>
+                            requestAnimationFrame é um método (temporizador)  mais eficiente para usar quando
+                            deseja-se fazer alguma animação pois quem  decide o tempo quando ele executará é próprio  navegador
+                            evitando ciclos de CPU desperdiçado, alé disso ele só é executado quando o aba do navegador está ativa evitando processos desnecessários.
+
+                        </p>
+                        <pre><code>
+requestAnimationFrame(function(){
+
+ //será executado apenas uma vez  
+});
+						
+						</code></pre>
+
+                    </section>
+                    <section>
+                        <h2>requestAnimationFrame</h2>
+                        <h3>Compatibilidade</h3>
+                        <img src="img/suportera.png" style='height: 400px'  /> 
+
+
+                    </section>
+
+
+
+                    <section>
+                        <h2>requestAnimationFrame</h2>
+                        <h3>Compatibilidade</h3>
+
+                        <pre><code>					 						
+window.requestAnimationFrame = (function() {
+	return window.requestAnimationFrame ||
+			window.webkitRequestAnimationFrame ||
+			window.mozRequestAnimationFrame ||
+			window.oRequestAnimationFrame ||
+			window.msRequestAnimationFrame ||
+			function(callback) {
+				window.setTimeout(function() {
+					callback(+new Date);
+				}, 1000 / 60);
+			};
+})();
+</code></pre>																		
+                    </section>
+
+                </section>
+
+
+
+
+
+
+                <section>
+                    <h2>FPS</h2>
+                    <h3>Frames por Segundo</h3>
+
+                    <p>FPS é a quandidade de vezes em que a tela foi desenhada em um segundo.Em um jogo o ideal é  ter uma taxa entre 30 à 60 fps. </p>
+                    <pre><code>
+//considerando tempoDecorridoDesdeUltimoLoop
+// sendo o tempo desde o ultimo loop
+// estimativa  aproximada:
+// se estiver executando a cada loop 
+//o tempo de 'tempoDecorridoDesdeUltimoLoop'
+// então  ele executara 1000/tempoDecorridoDesdeUltimoLoop 
+//vezes em um segundo   
+// Por exemplo:
+// se a cada loop  demora 16ms 
+//então em 1 segundo (1000ms) ele  executara 60 vezes
+// 16*x = 1000
+// x =  1000/16
+// x  = 60 fps
+
+ var fps = (1000 / tempoDecorridoDesdeUltimoLoop);
+  
+  </code></pre>	
+
+
+                </section>  
+
+                <section>
+                    <h2>Movimentação Baseada em FPS</h2>
+                    <p>
+                        Um carro  movimenta-se em quilometros por hora, em canvas o movimento basea-se em pixels por segundo, logo temos:
+                    </p>
+                    <pre>
+								<code>
+FPS; // valor adquirida conforme explicado no slide anterior
+var velocidade= 100; //pixel por segundo
+
+var movimento= velocidade / FPS;
+								</code>
+                    </pre>
+                </section>
+
+                <section>
+                    <h2>Game Loop</h2>
+                    <p>
+                        O Game Loop é responsável pelo funcionamento do jogo. Este loop é executado consiste de uma sequência:
+                    </p>
+                    <ol>
+                        <li class="fragment">Ler entrada do usuário</li>
+                        <li class="fragment">Atualizar entidades</li>
+                        <li class="fragment">Aplicar a lógica</li>
+                        <li class="fragment">Desenha o jogo</li>
+                    </ol>
+                </section>
+
+
+                <section>
+                    <section>
+                        <h2>Exemplos de Jogos desenvolvidos com HTML5</h2>						
+                    </section>
+
+                    <section>
+                        <h2> Jogo da Memória</h2>
+
+                        <a href="https://apps.facebook.com/jogo_memoria/"  >https://apps.facebook.com/jogo_memoria/ </a><br >
+                        <img src="img/jogomemo.png" style='height: 400px'  /> 
+
+
+                    </section>
+                    <section>
+                        <h2> Emberwind</h2>
+
+                        <a href="http://operasoftware.github.io/Emberwind/"  >Emberwind </a><br >
+                        <img src="img/Emberwind.jpg" style='height: 400px'  /> 
+
+                    </section>
+                    <section>
+                        <h2> BananaBread</h2>
+
+                        <a href="https://developer.mozilla.org/en-US/demos/detail/bananabread/"  >BananaBread </a><br >
+                        <img src="img/1345751931_screenshot_1.png" style='height: 400px'  /> 
+
+                    </section>
+
+
+
+
+                </section>
+
+                <section>
+                    <h2> GameOver</h2>
+
+
+                    <img src="img/game-over-super-mario.jpg" style='height: 400px'  /> 
+
+                </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+
+        </div>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.min.js"></script>
+
+        <script>
+
+
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+                theme: Reveal.getQueryHash().theme || 'default', // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'cube',
+                multiplex: {
+                    //{"secret":"13680795181571946425","socketId":"4b30481affccc1c6"} 
+                    // Example values. Generate your own.
+                    secret: '13680795181571946425', // Obtained from the socket.io server. Gives this (the master) control of the presentation
+                    id: '4b30481affccc1c6', // Obtained from socket.io server
+                    url: 'revealjs.jit.su:80' // Location of socket.io server
+                },
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    {src: 'lib/js/classList.js', condition: function() {
+                            return !document.body.classList;
+                        }},
+                    {src: 'plugin/markdown/marked.js', condition: function() {
+                            return !!document.querySelector('[data-markdown]');
+                        }},
+                    {src: 'plugin/markdown/markdown.js', condition: function() {
+                            return !!document.querySelector('[data-markdown]');
+                        }},
+                    {src: 'plugin/highlight/highlight.js', async: true, callback: function() {
+                            hljs.initHighlightingOnLoad();
+                        }},
+                    {src: 'plugin/zoom-js/zoom.js', async: true, condition: function() {
+                            return !!document.body.classList;
+                        }},
+                    {src: 'plugin/notes/notes.js', async: true, condition: function() {
+                            return !!document.body.classList;
+                        }},
+                    {src: 'http://cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.10/socket.io.min.js', async: true},
+                    {src: 'plugin/multiplex/master.js', async: true}
+                    // { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+                    // { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
+
+        </script>
+
+    </body>
+</html>
