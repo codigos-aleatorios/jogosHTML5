@@ -7,6 +7,7 @@ var Jogo = (function(MarioVoador, Sprite, Explosao, GLOBAIS, Inimigo, Fundo, car
 
     //	alert("som no ie e o opera da dois play -----  corrigir ,moeda  scorpion");
     return {
+        telaDeInicio: true,
         nivel: 1,
         gameOver: false,
         MarioVoador: null,
@@ -69,14 +70,21 @@ var Jogo = (function(MarioVoador, Sprite, Explosao, GLOBAIS, Inimigo, Fundo, car
         },
         inicializarEntidades: function() {
             this.atualizaRankHtml();
-            // this.Cenario.init(this);
-            MarioVoador.init(this);
+
+
             Fundo.init();
 
             //
         },
- 
-  
+        iniciarJogo: function() {
+
+            MarioVoador.init(this);
+            this.telaDeInicio = false;
+            Fundo.sprite.setDirecao(Sprite.DIRECAO.ESQUERDA);
+            Fundo.sprite.setComportamentoAtual(Fundo.sprite.comportamentos.movimentando);
+            Fundo.sons[0].play();
+
+        },
         reset: function() {
             var maiorPontuacao = localStorage.getItem("rank") || 0;
 
@@ -103,76 +111,87 @@ var Jogo = (function(MarioVoador, Sprite, Explosao, GLOBAIS, Inimigo, Fundo, car
         },
         leEntradas: function(fps) {
             var t = this.teclado;
-            MarioVoador.sprite.setDirecao(Sprite.DIRECAO.PARADO);
 
-            if (t.estaPressionada(t.teclas.SHIFT) && MarioVoador.estrelas > 0) {
-                t.desabilitaAteSoltar(t.teclas.SHIFT);
-                this.explodeTudo();
-            }
 
-            //se as duas estao pressionadas entao solta q que foi pressionada antes
-            if (t.estaPressionada(t.teclas.ESQUERDA) && t.estaPressionada(t.teclas.DIREITA)) {
-                t.soltaTecla(t.getTeclaPressionadaQueFoiPressionadaAntes([
-                    t.teclas.ESQUERDA, t.teclas.DIREITA
-                ]));
-            }
 
-            if (t.estaPressionada(t.teclas.ESPACO)) {
-                //if( MarioVoador.sprite.comportamentoAtual === MarioVoador.comportamentos.parado || MarioVoador.sprite.comportamentoAtual === MarioVoador.comportamentos.paraDireita)
-                //{
-                MarioVoador.atirar();
-                //}
-
-            }
-
-            if (t.estaPressionada(t.teclas.DIREITA)) {
-                t.soltaTecla(t.teclas.ESQUERDA);
-                MarioVoador.sprite.setDirecao(Sprite.DIRECAO.DIREITA);
-                MarioVoador.sprite.aplicarMovimentoX(fps);
-
-                if (MarioVoador.comportamentos.paraDireita !== MarioVoador.sprite.comportamentoAtual) {
-
-                    //MarioVoador.sons.pulando.play();
-                    MarioVoador.sprite.setComportamentoAtual(MarioVoador.comportamentos.paraDireita);
+            if (!this.telaDeInicio) {
+                MarioVoador.sprite.setDirecao(Sprite.DIRECAO.PARADO);
+                if (t.estaPressionada(t.teclas.SHIFT) && MarioVoador.estrelas > 0) {
+                    t.desabilitaAteSoltar(t.teclas.SHIFT);
+                    this.explodeTudo();
                 }
 
-            } else if (t.estaPressionada(t.teclas.ESQUERDA)) {
-                t.soltaTecla(t.teclas.DIREITA);
-                MarioVoador.sprite.setDirecao(Sprite.DIRECAO.ESQUERDA);
-                MarioVoador.sprite.aplicarMovimentoX(fps);
-                if (MarioVoador.comportamentos.paraEsquerda !== MarioVoador.sprite.comportamentoAtual) {
-
-                    //MarioVoador.sons.pulando.play();
-                    MarioVoador.sprite.setComportamentoAtual(MarioVoador.comportamentos.paraEsquerda);
+                //se as duas estao pressionadas entao solta q que foi pressionada antes
+                if (t.estaPressionada(t.teclas.ESQUERDA) && t.estaPressionada(t.teclas.DIREITA)) {
+                    t.soltaTecla(t.getTeclaPressionadaQueFoiPressionadaAntes([
+                        t.teclas.ESQUERDA, t.teclas.DIREITA
+                    ]));
                 }
 
-            } else if (t.estaPressionada(t.teclas.CIMA)) {
-                t.soltaTecla(t.teclas.BAIXO);
-                MarioVoador.sprite.setDirecao(Sprite.DIRECAO.CIMA);
-                MarioVoador.sprite.aplicarMovimentoY(fps);
-                if (MarioVoador.comportamentos.paraCima !== MarioVoador.sprite.comportamentoAtual) {
+                if (t.estaPressionada(t.teclas.ESPACO)) {
+                    //if( MarioVoador.sprite.comportamentoAtual === MarioVoador.comportamentos.parado || MarioVoador.sprite.comportamentoAtual === MarioVoador.comportamentos.paraDireita)
+                    //{
+                    MarioVoador.atirar();
+                    //}
 
-                    //MarioVoador.sons.pulando.play();
-                    MarioVoador.sprite.setComportamentoAtual(MarioVoador.comportamentos.paraCima);
                 }
 
-            } else if (t.estaPressionada(t.teclas.BAIXO)) {
-                t.soltaTecla(t.teclas.CIMA);
-                MarioVoador.sprite.setDirecao(Sprite.DIRECAO.BAIXO);
-                MarioVoador.sprite.aplicarMovimentoY(fps);
-                if (MarioVoador.comportamentos.paraBaixo !== MarioVoador.sprite.comportamentoAtual) {
+                if (t.estaPressionada(t.teclas.DIREITA)) {
+                    t.soltaTecla(t.teclas.ESQUERDA);
+                    MarioVoador.sprite.setDirecao(Sprite.DIRECAO.DIREITA);
+                    MarioVoador.sprite.aplicarMovimentoX(fps);
 
-                    MarioVoador.sprite.setComportamentoAtual(MarioVoador.comportamentos.paraBaixo);
+                    if (MarioVoador.comportamentos.paraDireita !== MarioVoador.sprite.comportamentoAtual) {
+
+                        //MarioVoador.sons.pulando.play();
+                        MarioVoador.sprite.setComportamentoAtual(MarioVoador.comportamentos.paraDireita);
+                    }
+
+                } else if (t.estaPressionada(t.teclas.ESQUERDA)) {
+                    t.soltaTecla(t.teclas.DIREITA);
+                    MarioVoador.sprite.setDirecao(Sprite.DIRECAO.ESQUERDA);
+                    MarioVoador.sprite.aplicarMovimentoX(fps);
+                    if (MarioVoador.comportamentos.paraEsquerda !== MarioVoador.sprite.comportamentoAtual) {
+
+                        //MarioVoador.sons.pulando.play();
+                        MarioVoador.sprite.setComportamentoAtual(MarioVoador.comportamentos.paraEsquerda);
+                    }
+
+                } else if (t.estaPressionada(t.teclas.CIMA)) {
+                    t.soltaTecla(t.teclas.BAIXO);
+                    MarioVoador.sprite.setDirecao(Sprite.DIRECAO.CIMA);
+                    MarioVoador.sprite.aplicarMovimentoY(fps);
+                    if (MarioVoador.comportamentos.paraCima !== MarioVoador.sprite.comportamentoAtual) {
+
+                        //MarioVoador.sons.pulando.play();
+                        MarioVoador.sprite.setComportamentoAtual(MarioVoador.comportamentos.paraCima);
+                    }
+
+                } else if (t.estaPressionada(t.teclas.BAIXO)) {
+                    t.soltaTecla(t.teclas.CIMA);
+                    MarioVoador.sprite.setDirecao(Sprite.DIRECAO.BAIXO);
+                    MarioVoador.sprite.aplicarMovimentoY(fps);
+                    if (MarioVoador.comportamentos.paraBaixo !== MarioVoador.sprite.comportamentoAtual) {
+
+                        MarioVoador.sprite.setComportamentoAtual(MarioVoador.comportamentos.paraBaixo);
+                    }
+
                 }
+
+                if (MarioVoador.sprite.direcao === Sprite.DIRECAO.PARADO &&
+                        MarioVoador.comportamentos.parado !== MarioVoador.sprite.comportamentoAtual) {
+                    MarioVoador.sprite.setComportamentoAtual(MarioVoador.comportamentos.parado);
+                }
+
+            } else {
+                //tela de inicio
+                if (t.estaPressionada(t.teclas.ENTER)) {
+                    this.iniciarJogo();
+
+                }
+
 
             }
-
-            if (MarioVoador.sprite.direcao === Sprite.DIRECAO.PARADO &&
-                    MarioVoador.comportamentos.parado !== MarioVoador.sprite.comportamentoAtual) {
-                MarioVoador.sprite.setComportamentoAtual(MarioVoador.comportamentos.parado);
-            }
-
-
         },
         aplicaEscala: function(escala) {
             if (escala <= 0.1) {
@@ -191,23 +210,24 @@ var Jogo = (function(MarioVoador, Sprite, Explosao, GLOBAIS, Inimigo, Fundo, car
 
             Fundo.sprite.desenha(this.ctx);
 
+            if (!this.telaDeInicio) {
+                this.desenhaInterfaceStatus();
 
-            this.desenhaInterfaceStatus();
+                MarioVoador.sprite.desenha(this.ctx);
+                for (i = 0, l = MarioVoador.tiros.length; i < l; i++) {
+                    MarioVoador.tiros[i].desenha(this.ctx);
+                }
 
-            MarioVoador.sprite.desenha(this.ctx);
-            for (i = 0, l = MarioVoador.tiros.length; i < l; i++) {
-                MarioVoador.tiros[i].desenha(this.ctx);
-            }
+                for (i = 0, l = this.inimigos.length; i < l; i++) {
+                    this.inimigos[i].sprite.desenha(this.ctx);
+                }
+                for (i = 0, l = this.explosoes.length; i < l; i++) {
+                    this.explosoes[i].desenha(this.ctx);
 
-            for (i = 0, l = this.inimigos.length; i < l; i++) {
-                this.inimigos[i].sprite.desenha(this.ctx);
-            }
-            for (i = 0, l = this.explosoes.length; i < l; i++) {
-                this.explosoes[i].desenha(this.ctx);
-
-            }
-            for (i = 0, l = this.itens.length; i < l; i++) {
-                this.itens[i].sprite.desenha(this.ctx);
+                }
+                for (i = 0, l = this.itens.length; i < l; i++) {
+                    this.itens[i].sprite.desenha(this.ctx);
+                }
             }
             this.ctx.restore();
         },
@@ -469,16 +489,18 @@ var Jogo = (function(MarioVoador, Sprite, Explosao, GLOBAIS, Inimigo, Fundo, car
         },
         atualizaComportamentos: function(fps) {
             Fundo.atualiza(fps);
-            MarioVoador.sprite.executar(fps);
-            this.atualizaComportamentoTiro(fps);
-            this.atualizaComportamentoInimigo(fps);
-            this.atualizaComportamentoExplosao(fps);
-            this.atualizaComportamentoItem(fps);
+            if (!this.telaDeInicio) {
+                MarioVoador.sprite.executar(fps);
+                this.atualizaComportamentoTiro(fps);
+                this.atualizaComportamentoInimigo(fps);
+                this.atualizaComportamentoExplosao(fps);
+                this.atualizaComportamentoItem(fps);
 
-            if (MarioVoador.sprite.comportamentoAtual === MarioVoador.comportamentos.morrendo &&
-                    MarioVoador.sprite.verificaSeUltrapassouLimitesDoCanvas({baixo: true}) &&
-                    MarioVoador.sprite.comportamentoAtual.animacaoFinalizada) {
-                this.reset();
+                if (MarioVoador.sprite.comportamentoAtual === MarioVoador.comportamentos.morrendo &&
+                        MarioVoador.sprite.verificaSeUltrapassouLimitesDoCanvas({baixo: true}) &&
+                        MarioVoador.sprite.comportamentoAtual.animacaoFinalizada) {
+                    this.reset();
+                }
             }
 
         },
@@ -486,14 +508,14 @@ var Jogo = (function(MarioVoador, Sprite, Explosao, GLOBAIS, Inimigo, Fundo, car
             // estimativa  aproximada:
             // se estiver executando a cada loop o tempo de 'tempoDecorridoDesdeUltimoLoop'
             // então  ele executara 1000/tempoDecorridoDesdeUltimoLoop vezes em um segundo   
-             // Por exemplo:
-		     // se a cada loop  demora 16ms então em 1 segundo (1000ms) ele  executara 60 vezes
-             // 16*x = 1000
-             // x =  1000/16
-			 // x  = 60 fps
+            // Por exemplo:
+            // se a cada loop  demora 16ms então em 1 segundo (1000ms) ele  executara 60 vezes
+            // 16*x = 1000
+            // x =  1000/16
+            // x  = 60 fps
             if (tempoDecorridoDesdeUltimoLoop > 0) {
                 this.fps = (1000 / tempoDecorridoDesdeUltimoLoop);
-            
+
             }
 
             return this.fps;
@@ -528,16 +550,20 @@ var Jogo = (function(MarioVoador, Sprite, Explosao, GLOBAIS, Inimigo, Fundo, car
                 var fps = this.calculaFPS(tempoDecorrido);
 
                 if (!this.gameOver) {
-                    this.leEntradas(fps);                  
+                    this.leEntradas(fps);
 
                 }
-                this.adicionaInimigo();
+                if (!this.telaDeInicio) {
+                    this.adicionaInimigo();
+
+                }
                 //executar comportamento
                 this.atualizaComportamentos(fps);
 
-                if (!this.gameOver) {
+                if (!this.gameOver && !this.telaDeInicio) {
                     this.colisoes(fps);
                 }
+
 
                 //desenhar as entidades
                 this.desenha(fps);

@@ -12,6 +12,19 @@ var Fundo = (function(Sprite, Comportamento, GLOBAIS, carregadorRecursos, Elemen
 
         },
         comportamentos: {
+            inicio: Comportamento.criarComportamento({
+                modificadorDeGravidade: 0,
+                indiceFrameAtual: 0,
+                duracaoDaAnimacao: 1000,
+                loop: true,
+                frames: [
+                    {x: 3, y: 2174, largura: 506, altura: 363},
+                    {x: 511, y: 2174, largura: 506, altura: 363}
+
+
+
+                ]
+            }),
             movimentando: Comportamento.criarComportamento({
                 modificadorDeGravidade: 0,
                 indiceFrameAtual: 0,
@@ -56,14 +69,16 @@ var Fundo = (function(Sprite, Comportamento, GLOBAIS, carregadorRecursos, Elemen
             this.sons[indice].play();
         },
         init: function() {
+
             this.sons = [
+               
                 ElementoAudio({elementoAudio: carregadorRecursos.get("recursos/audio/musica/1"), loop: true}),
                 ElementoAudio({elementoAudio: carregadorRecursos.get("recursos/audio/musica/2"), loop: true}),
                 ElementoAudio({elementoAudio: carregadorRecursos.get("recursos/audio/musica/3"), loop: true}),
                 ElementoAudio({elementoAudio: carregadorRecursos.get("recursos/audio/musica/4"), loop: true})
 
             ];
-            this.sons[0].play();
+           
 
 
 
@@ -72,8 +87,8 @@ var Fundo = (function(Sprite, Comportamento, GLOBAIS, carregadorRecursos, Elemen
                 x: 0,
                 y: 0,
                 comportamentos: this.comportamentos,
-                comportamentoAtual: this.comportamentos.movimentando,
-                direcao: Sprite.DIRECAO.ESQUERDA,
+                comportamentoAtual: this.comportamentos.inicio,
+                direcao: Sprite.DIRECAO.PARADO,
                 velocidade: 100, //pixels por segundo
                 desenha: function(ctx) {  //mudar  parametro
 
@@ -85,8 +100,14 @@ var Fundo = (function(Sprite, Comportamento, GLOBAIS, carregadorRecursos, Elemen
 
 
 
-                    var y = frameAtual.altura - GLOBAIS.ALTURA_CANVAS;
-
+                    var y = -(frameAtual.altura - GLOBAIS.ALTURA_CANVAS);
+                    var largura = frameAtual.largura;
+                    var altura = frameAtual.altura;
+                    if (comportamentoAtual === this.comportamentos.inicio) {
+                        largura = GLOBAIS.LARGURA_CANVAS;
+                        altura = GLOBAIS.ALTURA_CANVAS;
+                        y = 0;
+                    }
 
 
                     //quantas imagens sao necessarias  para preencher a largura
@@ -96,8 +117,8 @@ var Fundo = (function(Sprite, Comportamento, GLOBAIS, carregadorRecursos, Elemen
 
                         ctx.drawImage(this.objImg, frameAtual.x, frameAtual.y,
                                 frameAtual.largura, frameAtual.altura,
-                                this.x + (i * frameAtual.largura), -y,
-                                frameAtual.largura, frameAtual.altura);
+                                this.x + (i * frameAtual.largura), y,
+                                largura, altura);
                     }
                     ctx.restore();
 
