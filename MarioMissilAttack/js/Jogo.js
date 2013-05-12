@@ -627,14 +627,6 @@ var Jogo = (function(MarioVoador, Sprite, Explosao, GLOBAIS, Inimigo, Fundo, car
 
             this.ctx = this.canvas.getContext("2d");
             this.aplicaEscala(GLOBAIS.ESCALA);
-            window.addEventListener("blur", function() {
-                console.log("blur");
-                Jogo.pause();
-            }, false);
-            window.addEventListener("focus", function() {
-                console.log("focus");
-                Jogo.resume();
-            }, false);
 
 
             //criar as entidade //personagens

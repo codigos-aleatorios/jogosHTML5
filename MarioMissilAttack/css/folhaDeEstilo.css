@@ -6,7 +6,6 @@
 
 body{
     background-color:#333;
-    /*  background-image: url("../img/logo-html5.png");*/
 }
 
 .insideCenter{
@@ -20,25 +19,31 @@ body{
 
 }
 #divDir{    
-    position: absolute;
-    right: 0;
-    top: 0;
-    width:300px;
+	width:800px;
+	
+	background-color: #fff;
+	
+	margin-top: 20px;
+	padding: 15px 0;
 
 }
-.ranking{padding:10px;  
-         margin-bottom: 20px;
-         border: 1px solid #000;
-         background-color: #fafafa;
+#divDir div{
+	display:inline-block;
+}
+#divDir button{
+	padding:5px;
+}
+.ranking{
+	margin:0 50px;
 }
 #jogoCanvas{
     display: none;
-    position: relative;
-
+	padding:20px 0;
 }
 .devPor{
     background-color:#fff;
     padding:10px;
+	margin:20px 0;
 }
 #bordasTelaDoJogo{
     display:inline-block;
@@ -50,22 +55,20 @@ body{
 
     border:1px solid #222;
     border-radius: 5px;	
-    box-shadow: 3px 3px 2px #555;
+    box-shadow: 10px 10px 5px #555;
 
 }
 
-#botoesControle button{
-    padding: 10px;
-    font-size:20px;
-    margin-top: 10px;
-
-}
 #imgInicio{
     text-align: center;
     margin: 30px;
     display: none;
 
-}#imgInicio img{cursor:pointer;}
+}
+#imgInicio img{
+	cursor:pointer;
+}
+
 #telaDoJogo{
     background-color:#222;
     padding:0px;
