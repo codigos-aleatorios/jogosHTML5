@@ -144,19 +144,19 @@
                         <li > O elemento Canvas </li>
                         <li > O elemento Áudio </li>
                         <li > Local Storage </li>
-						<li > Entrada de usuário </li>
+                        <li > Entrada de usuário </li>
                         <li > Jogos. Técnicas e Conceitos 
-							<ul>
-								<li > Sprite </li>
-								<li > Animação </li>
-								<li > Colisão </li>
-								<li > Cenário </li>
-								<li > Frames Por Segundo </li>
-								<li > Movimentação Baseada em FPS </li>
-								<li > Game Loop </li> 
-							</ul>
-						</li>
-                        
+                            <ul>
+                                <li > Sprite </li>
+                                <li > Animação </li>
+                                <li > Colisão </li>
+                                <li > Cenário </li>
+                                <li > Frames Por Segundo </li>
+                                <li > Movimentação Baseada em FPS </li>
+                                <li > Game Loop </li> 
+                            </ul>
+                        </li>
+
                         <li > Exemplos de jogos desenvolvidos com HTML5 </li>
                     </ul>
                 </section>
@@ -223,15 +223,15 @@
 
                         </p>
                     </section>
-							<section>
-								<h2>Canvas</h2>
-								<h3>Compatibilidade</h3>
-                               <img src="img/suportecanvas.png" style='height: 400px'  /> 
- 
-							 																	
-						</section>
-					
-					
+                    <section>
+                        <h2>Canvas</h2>
+                        <h3>Compatibilidade</h3>
+                        <img src="img/suportecanvas.png" style='height: 400px'  /> 
+
+
+                    </section>
+
+
                     <section>
                         <h2>Sistemas de Coordenadas</h2>
                         <p>
@@ -472,34 +472,34 @@ imgDOM.src = 'imagem.jpg';
                     <!--  ############################################################################## -->
                 </section>
 
-				
-		
-     
-<section>
- 
-		 <section>
-		<h2> Local Storage</h2>
 
-		<p>
-		Serve para armazenar dados no navegador, o localStorage fica disponível não expira ele só é removido via código ou se o cliente 
-		excluir .
-		     
-<pre><code>
+
+
+                <section>
+
+                    <section>
+                        <h2> Local Storage</h2>
+
+                        <p>
+                            Serve para armazenar dados no navegador, o localStorage fica disponível não expira ele só é removido via código ou se o cliente 
+                            excluir .
+                        </p>
+                        <pre><code>
 //guardar
 localStorage.setItem("pontos" , 123);
 //recuperar
 localStorage.getItem("pontos");///
 </code></pre>
-		
-		</p>
-		 
-								
-		</section>
-	 
-		
-		 
-		
-</section>
+
+
+
+
+                    </section>
+
+
+
+
+                </section>
 
 
 
@@ -598,87 +598,87 @@ console.log(coordenada.pageX) ;
                     <img src="img/mario.png"   /> 
                 </section>
 
-				<section>
-					<section>
-						<h2>Sprite</h2>
-					</section>
+                <section>
+                    <section>
+                        <h2>Sprite</h2>
+                    </section>
 
-					<section>
-						<h2>O que são?</h2> 
-						<p>
-							Sprites são os elementos gráficos que serão exibidos na tela do jogo. Esses elementos representam personagens, inimigos, itens,
-							cenarios, etc...
-						</p>
-					</section>
-					
-					<section>
-						<h2>Folha de Sprites</h2> 
-						<p>
-							A folha de sprites é uma imagem contendo todas ou um conjunto de sprites.
-						</p>
-					</section>
-					
-					<section>
-						<h2>Folha de Sprites</h2> 
-						<img src="img/sprite2.jpg" >
-						<p>
-							Esta imagem é uma folha de sprites, ela representa o conjunto de sprites necessárias para representar visualmente o caminhar do personagem (O Máscara).
-						</p>
-					</section>
-				</section>
-				<section>
-					<section>
-						<h2>Animação</h2> 
-					</section>
-					
-					<section>
-						<h2>Animação</h2> 
-						<p>
-							Uma animação é uma ilusão resultante da troca de imagens em uma velocidade pré determinada. Essa velocidade é representada por
-							FPS (Frames Por Segundos) ou quantas vezes a imagem (canvas) será redensenhada em um segundo. Para um jogo, considera-se aceitavel uma taxa entre
-							30 e 60 fps.
-						</p>
-					</section>
-					
-					<section>
-						<h2>Animação</h2>
-						<img src="img/sprite3.jpg" >
-						<p>
-							Para animar o caminhar de nosso personagem, devemos fazer as trocas de frames na seguinte sequência:</br>
-							3, 4, 5, 6, 7, 8, 1, 2
-						</p>
-					</section>
+                    <section>
+                        <h2>O que são?</h2> 
+                        <p>
+                            Sprites são os elementos gráficos que serão exibidos na tela do jogo. Esses elementos representam personagens, inimigos, itens,
+                            cenarios, etc...
+                        </p>
+                    </section>
 
-					<section>
-						<h2>Animação</h2>
-						<p>
-							Vimos que nossa folha de sprites é um conjunto de imagens, e que em cada troca deve ser exibido uma imagem por vez. Para isso iremos
-							"mapear" nossa folha separando cada imagem.
-						</p>
-						<img src="img/sprite4.jpg" >
-						<p>
-							Como fazer isso?
-						</p>
-					</section>
-					
-					<section>
-						<h2>Animação</h2>
-						<p>
-							Vamos dizer que cada sprite é um frame, para pegar um frame precisamos saber a posíção x e y na folha de sprites e a largura e altura
-							do frame:
-						</p>
-						<img src="img/sprite5.jpg" >
-						<p>
-							Temos então assim:</br>
-							x= 0, y= 0, largura= 20 e altura= 30
-						</p>
-					</section>
-					<section>
-						<h2>Animação</h2>
-						<p>
-							Nosso mapeamento ficará da seginte forma:
-						</p>
-<pre>
+                    <section>
+                        <h2>Folha de Sprites</h2> 
+                        <p>
+                            A folha de sprites é uma imagem contendo todas ou um conjunto de sprites.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h2>Folha de Sprites</h2> 
+                        <img src="img/sprite2.jpg" >
+                        <p>
+                            Esta imagem é uma folha de sprites, ela representa o conjunto de sprites necessárias para representar visualmente o caminhar do personagem (O Máscara).
+                        </p>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Animação</h2> 
+                    </section>
+
+                    <section>
+                        <h2>Animação</h2> 
+                        <p>
+                            Uma animação é uma ilusão resultante da troca de imagens em uma velocidade pré determinada. Essa velocidade é representada por
+                            FPS (Frames Por Segundos) ou quantas vezes a imagem (canvas) será redensenhada em um segundo. Para um jogo, considera-se aceitavel uma taxa entre
+                            30 e 60 fps.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h2>Animação</h2>
+                        <img src="img/sprite3.jpg" >
+                        <p>
+                            Para animar o caminhar de nosso personagem, devemos fazer as trocas de frames na seguinte sequência:</br>
+                            3, 4, 5, 6, 7, 8, 1, 2
+                        </p>
+                    </section>
+
+                    <section>
+                        <h2>Animação</h2>
+                        <p>
+                            Vimos que nossa folha de sprites é um conjunto de imagens, e que em cada troca deve ser exibido uma imagem por vez. Para isso iremos
+                            "mapear" nossa folha separando cada imagem.
+                        </p>
+                        <img src="img/sprite4.jpg" >
+                        <p>
+                            Como fazer isso?
+                        </p>
+                    </section>
+
+                    <section>
+                        <h2>Animação</h2>
+                        <p>
+                            Vamos dizer que cada sprite é um frame, para pegar um frame precisamos saber a posíção x e y na folha de sprites e a largura e altura
+                            do frame:
+                        </p>
+                        <img src="img/sprite5.jpg" >
+                        <p>
+                            Temos então assim:</br>
+                            x= 0, y= 0, largura= 20 e altura= 30
+                        </p>
+                    </section>
+                    <section>
+                        <h2>Animação</h2>
+                        <p>
+                            Nosso mapeamento ficará da seginte forma:
+                        </p>
+                        <pre>
 	<code>
 frames[0].x= 0;
 frames[0].y= 0;
@@ -692,15 +692,15 @@ frames[1].altura= 30;
 
 ...
 	</code>
-</pre>	
-					</section>
-					<section>
-						<h2>Animação</h2>
-						<p>
-							Tendo a folha de sprites mapeada, a cada troca de frames saberemos qual posição da folha renderizar no canvas com o método
-							drawImage():
-						</p>
-<pre>
+                        </pre>	
+                    </section>
+                    <section>
+                        <h2>Animação</h2>
+                        <p>
+                            Tendo a folha de sprites mapeada, a cada troca de frames saberemos qual posição da folha renderizar no canvas com o método
+                            drawImage():
+                        </p>
+                        <pre>
 	<code>
 
 ctx.drawImage(folhaSprites, frames[indiceAtual].x, frames[i].y,
@@ -708,51 +708,51 @@ frames[i].largura, farmes[i].altura,
 200, 200);
 
 	</code>
-</pre>	
-					</section>
-					<section>
-						<h2>Animação de Sprite</h2>
-						<img src="img/sprite6.jpg" />
-					</section>
-				
-				</section>
-				
-				
-				
-				<section>
-					<section>
-						<h2>Colisão</h2>
-					</section>
-					
-					<section>
-						<h2>Colisão</h2>
-						<p>
-							Uma colisão acontece quando um objeto "tromba" em outro. Pensando em jogos, a colisão acontece quando objeto está na mesma posição
-							x e y ocupada pelo outro objeto. Esse conceito é importante, talvez é o mais importante no funcionamento de um jogo.
-						</p>
-					</section>
-					<section>
-						<h2>Colisão</h2>
-						<p>
-							Quando acontece uma colisão em um jogo?
-						</p>
-						<ul>
-							<li class="fragment">Quando o Mario "encosta" em um inimigo. Ele morre.</li>
-							<li class="fragment">Quando o Mario "encosta" em um cogumelo. Ele cresce.</li>
-							<li class="fragment">Quando o Mario "encosta" numa parede. Ele é impedido de andar.</li>
-						</ul>
-					</section>
-					<section>
-						<h2>Colisão</h2>
-						<img src="img/colisao1.jpg"/>
-					</section>
-				</section>
+                        </pre>	
+                    </section>
+                    <section>
+                        <h2>Animação de Sprite</h2>
+                        <img src="img/sprite6.jpg" />
+                    </section>
+
+                </section>
+
 
 
                 <section>
-					<section>
+                    <section>
+                        <h2>Colisão</h2>
+                    </section>
+
+                    <section>
+                        <h2>Colisão</h2>
+                        <p>
+                            Uma colisão acontece quando um objeto "tromba" em outro. Pensando em jogos, a colisão acontece quando objeto está na mesma posição
+                            x e y ocupada pelo outro objeto. Esse conceito é importante, talvez é o mais importante no funcionamento de um jogo.
+                        </p>
+                    </section>
+                    <section>
+                        <h2>Colisão</h2>
+                        <p>
+                            Quando acontece uma colisão em um jogo?
+                        </p>
+                        <ul>
+                            <li class="fragment">Quando o Mario "encosta" em um inimigo. Ele morre.</li>
+                            <li class="fragment">Quando o Mario "encosta" em um cogumelo. Ele cresce.</li>
+                            <li class="fragment">Quando o Mario "encosta" numa parede. Ele é impedido de andar.</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Colisão</h2>
+                        <img src="img/colisao1.jpg"/>
+                    </section>
+                </section>
+
+
+                <section>
+                    <section>
                         <h2> Cenário</h2> 
-					</section>	
+                    </section>	
                     <section>
                         <h2> Cenário</h2> 
                         <p>
@@ -789,9 +789,9 @@ frames[i].largura, farmes[i].altura,
                     </section>
                     <section>
                         <h2> Cenário</h2> 
-						
+
                         <h3>Montando o cenário</h3>
-						<pre><code>//id da célula -1 não desenha						
+                        <pre><code>//id da célula -1 não desenha						
 matCenario = [
 	[-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
 	[-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
@@ -801,49 +801,49 @@ matCenario = [
 	[-1, -1, -1, -1, -1, 12, 13, 14, -1, -1],
 	[10, 10, 10, 10, 10, 10, 10, 10, 10, 10]
 ];</code></pre>
-						<div style="background-color:#fff;display:inline-block">
-                        <img  src="img/tilemap3.png" style='height: 200px'  /> 
-						
-						</div>
-						 <a style="font-size:12px" href="exemplos/exemplo_tile_map.html" target="_blank" >[ver exemplo] </a>
+                        <div style="background-color:#fff;display:inline-block">
+                            <img  src="img/tilemap3.png" style='height: 200px'  /> 
+
+                        </div>
+                        <a style="font-size:17px" href="exemplos/exemplo_tile_map.html" target="_blank" >[ver exemplo] </a>
                     </section>
                 </section>
 
 
 
-  <section>   <section> 
+                <section>   <section> 
                         <h2> requestAnimationFrame</h2> 
-                     
+
                         <p>
-							requestAnimationFrame é um método (temporizador)  mais eficiente para usar quando
-							deseja-se fazer alguma animação pois quem  decide o tempo quando ele executará é próprio  navegador
-							evitando ciclos de CPU desperdiçado, alé disso ele só é executado quando o aba do navegador está ativa evitando processos desnecessários.
-						
-						</p>
-						<pre><code>
+                            requestAnimationFrame é um método (temporizador)  mais eficiente para usar quando
+                            deseja-se fazer alguma animação pois quem  decide o tempo quando ele executará é próprio  navegador
+                            evitando ciclos de CPU desperdiçado, alé disso ele só é executado quando o aba do navegador está ativa evitando processos desnecessários.
+
+                        </p>
+                        <pre><code>
 requestAnimationFrame(function(){
 
  //será executado apenas uma vez  
 });
 						
 						</code></pre>
-						
-						</section>
-												<section>
-								<h2>requestAnimationFrame</h2>
-								<h3>Compatibilidade</h3>
-                               <img src="img/suportera.png" style='height: 400px'  /> 
- 
-							 																	
-						</section>
-						
-						
-						
-						<section>
-								<h2>requestAnimationFrame</h2>
-								<h3>Compatibilidade</h3>
-                             
-								<pre><code>					 						
+
+                    </section>
+                    <section>
+                        <h2>requestAnimationFrame</h2>
+                        <h3>Compatibilidade</h3>
+                        <img src="img/suportera.png" style='height: 400px'  /> 
+
+
+                    </section>
+
+
+
+                    <section>
+                        <h2>requestAnimationFrame</h2>
+                        <h3>Compatibilidade</h3>
+
+                        <pre><code>					 						
 window.requestAnimationFrame = (function() {
 	return window.requestAnimationFrame ||
 			window.webkitRequestAnimationFrame ||
@@ -856,22 +856,22 @@ window.requestAnimationFrame = (function() {
 				}, 1000 / 60);
 			};
 })();
-								</code></pre>																		
-						</section>
-						
+</code></pre>																		
                     </section>
-                  
 
-				  
-				  
-				  
-				  
-				    <section>
-								<h2>FPS</h2>
-								<h3>Frames por Segundo</h3>
-                              
-  <p>FPS é a quandidade de vezes em que a tela foi desenhada em um segundo.Em um jogo o ideal é  ter uma taxa entre 30 à 60 fps. </p>
-  <pre><code>
+                </section>
+
+
+
+
+
+
+                <section>
+                    <h2>FPS</h2>
+                    <h3>Frames por Segundo</h3>
+
+                    <p>FPS é a quandidade de vezes em que a tela foi desenhada em um segundo.Em um jogo o ideal é  ter uma taxa entre 30 à 60 fps. </p>
+                    <pre><code>
 //considerando tempoDecorridoDesdeUltimoLoop
 // sendo o tempo desde o ultimo loop
 // estimativa  aproximada:
@@ -889,105 +889,105 @@ window.requestAnimationFrame = (function() {
  var fps = (1000 / tempoDecorridoDesdeUltimoLoop);
   
   </code></pre>	
-  
-							 																	
-						</section>  
 
-						<section>
-							<h2>Movimentação Baseada em FPS</h2>
-							<p>
-								Um carro  movimenta-se em quilometros por hora, em canvas o movimento basea-se em pixels por segundo, logo temos:
-							</p>
-							<pre>
+
+                </section>  
+
+                <section>
+                    <h2>Movimentação Baseada em FPS</h2>
+                    <p>
+                        Um carro  movimenta-se em quilometros por hora, em canvas o movimento basea-se em pixels por segundo, logo temos:
+                    </p>
+                    <pre>
 								<code>
 FPS; // valor adquirida conforme explicado no slide anterior
 var velocidade= 100; //pixel por segundo
 
 var movimento= velocidade / FPS;
 								</code>
-							</pre>
-						</section>
-						
-						<section>
-							<h2>Game Loop</h2>
-							<p>
-								O Game Loop é responsável pelo funcionamento do jogo. Este loop é executado consiste de uma sequência:
-							</p>
-							<ol>
-								<li class="fragment">Ler entrada do usuário</li>
-								<li class="fragment">Atualizar entidades</li>
-								<li class="fragment">Aplicar a lógica</li>
-								<li class="fragment">Desenha o jogo</li>
-							</ol>
-						</section>
-					</section>
-				  
-				  <section>
-		<section>
-		<h2>Exemplos de Jogos desenvolvidos com HTML5</h2>						
-		</section>
-		
-		 <section>
-		<h2> Jogo da Memória</h2>
+                    </pre>
+                </section>
 
-		 <a href="https://apps.facebook.com/jogo_memoria/"  >https://apps.facebook.com/jogo_memoria/ </a><br >
-		    <img src="img/jogomemo.png" style='height: 400px'  /> 
-		 
-								
-		</section>
-		 <section>
-		<h2> Emberwind</h2>
+                <section>
+                    <h2>Game Loop</h2>
+                    <p>
+                        O Game Loop é responsável pelo funcionamento do jogo. Este loop é executado consiste de uma sequência:
+                    </p>
+                    <ol>
+                        <li class="fragment">Ler entrada do usuário</li>
+                        <li class="fragment">Atualizar entidades</li>
+                        <li class="fragment">Aplicar a lógica</li>
+                        <li class="fragment">Desenha o jogo</li>
+                    </ol>
+                </section>
 
-		 <a href="http://operasoftware.github.io/Emberwind/"  >Emberwind </a><br >
-		    <img src="img/Emberwind.jpg" style='height: 400px'  /> 
-								
-		</section>
-	   <section>
-		<h2> BananaBread</h2>
 
-		 <a href="https://developer.mozilla.org/en-US/demos/detail/bananabread/"  >BananaBread </a><br >
-		   <img src="img/1345751931_screenshot_1.png" style='height: 400px'  /> 
-								
-		</section>
-		
-		
-		 
-		
-</section>
+                <section>
+                    <section>
+                        <h2>Exemplos de Jogos desenvolvidos com HTML5</h2>						
+                    </section>
 
-				   <section>
-		<h2> GameOver</h2>
+                    <section>
+                        <h2> Jogo da Memória</h2>
 
-		 
-		   <img src="img/game-over-super-mario.jpg" style='height: 400px'  /> 
-								
-		</section>
-			  
-				  
-				  
-				  
-				  
-				  
-				  
-				  
-				  
-				  
-				  
-				  
-				  
-				  
-				  
-				  
-				  
-				  
-				  
-				  
-				  
-				  
-				  
-				  
-				  
-				  
+                        <a href="https://apps.facebook.com/jogo_memoria/"  >https://apps.facebook.com/jogo_memoria/ </a><br >
+                        <img src="img/jogomemo.png" style='height: 400px'  /> 
+
+
+                    </section>
+                    <section>
+                        <h2> Emberwind</h2>
+
+                        <a href="http://operasoftware.github.io/Emberwind/"  >Emberwind </a><br >
+                        <img src="img/Emberwind.jpg" style='height: 400px'  /> 
+
+                    </section>
+                    <section>
+                        <h2> BananaBread</h2>
+
+                        <a href="https://developer.mozilla.org/en-US/demos/detail/bananabread/"  >BananaBread </a><br >
+                        <img src="img/1345751931_screenshot_1.png" style='height: 400px'  /> 
+
+                    </section>
+
+
+
+
+                </section>
+
+                <section>
+                    <h2> GameOver</h2>
+
+
+                    <img src="img/game-over-super-mario.jpg" style='height: 400px'  /> 
+
+                </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             </div>
 
