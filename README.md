@@ -11,7 +11,7 @@ Victor Hugo de Paiva Gonçales / @victorvhpg
 
 
 
-ver slides: [http://codigos-aleatorios.github.io/jogosHTML5/MarioMissilAttack/index.html](http://codigos-aleatorios.github.io/jogosHTML5/slides/index.html)
+ver slides: [http://codigos-aleatorios.github.io/jogosHTML5/slides/index.html](http://codigos-aleatorios.github.io/jogosHTML5/slides/index.html)
 
 jogo desenvolvido: [Super Mario Míssil Attack ](http://codigos-aleatorios.github.io/jogosHTML5/MarioMissilAttack/index.html)
 
