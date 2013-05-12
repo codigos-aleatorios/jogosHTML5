@@ -30,10 +30,7 @@ var exemploTileMap = {
 					continue;
 				}
 				var xImg = (idCelula % quantidadeDeCelulaEmCadaLinha) * larguraCelula;
-				var yImg = 0;
-				if (idCelula > 0) {
-					yImg = Math.floor(idCelula / quantidadeDeCelulaEmCadaLinha) * alturaCelula;
-				}
+				var yImg = Math.floor(idCelula / quantidadeDeCelulaEmCadaLinha) * alturaCelula;
 				this.ctx.drawImage(img, xImg + espacamento, yImg + espacamento,
 					larguraCelula - espacamento, alturaCelula - espacamento,
 					coluna * (larguraCelula - espacamento), linha * (alturaCelula - espacamento),
