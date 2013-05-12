@@ -48,26 +48,31 @@ Desenvolvido por:
 
         </div>
 
-        <div id="jogoCanvas"  >
-            <div class="insideCenter" style="float:left">
+        <div id="jogoCanvas"  class="insideCenter">
+            <div class="insideCenter">
                 <div id="bordasTelaDoJogo" class="selfCenter">
                     <div id="telaDoJogo" class="insideCenter">
                         <canvas id="canvasDoJogo"  class="selfCenter"></canvas>
                     </div>	
                 </div>
             </div>
-            <div  id="divDir">
-                <div class="ranking"  >
+            <div  id="divDir" class="selfCenter">
+                <div class="ranking">
                     <span>Maior Pontuação: </span><span id="maiorPontuacao"></span>
                 </div>
 
-                <div  id="botoesControle">
-                    Escala: <input type="range"  value="2" step="0.1"   min=".3" max="5" id="btnEscala"/>  <label id="escalaTexto">2</label><br />            
-                   
-                    <button  id="btnPause"    >PAUSE</button> 
-                     <button  id="btnAudio"    >Sem Audio</button><br />
-                   
+                <div  >
+					<div>
+						Escala: <input type="range"  value="2" step="0.1"   min=".3" max="5" id="btnEscala"/>  <label id="escalaTexto">2</label>
+					</div>
+				   <div>
+						<button  id="btnPause" >PAUSE</button> 
+						<button  id="btnAudio" >Sem Audio</button>
+                   </div>
                 </div>
+				<div>
+					<a href="instrucoes.html" target="_blank">Instruções</a>
+				</div>
             </div>
             <div style="clear: both"></div>
 
@@ -81,9 +86,9 @@ Desenvolvido por:
             Desenvolvido por:
             <br />
 
-            Heberth Jorge Feres / @fereshj    <br />
-            Victor Hugo de Paiva Goncales / @victorvhpg  
-
+            Heberth Jorge Feres / <a href="http://www.twitter.com/fereshj">@fereshj</a>    <br />
+            Victor Hugo de Paiva Goncales / <a href="http://www.twitter.com/victorvhpg">@victorvhpg</a></br>			
+			Jogo desenvolvido para fins didaticos como parte da Semana de Computação e Informatica Unoeste / FIPP a <a href="http://www.unoeste.br/fipp/infoeste/25info/default.asp" target="_blank">25ª Infoeste</a>
 
         </div>
     </body>
