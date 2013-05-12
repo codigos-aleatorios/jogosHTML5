@@ -38,12 +38,18 @@ body{
 }
 #jogoCanvas{
     display: none;
-	padding:20px 0;
+	padding:2px 0;
 }
 .devPor{
-    background-color:#fff;
-    padding:10px;
-	margin:20px 0;
+    background-color:#fafafa;
+    padding:13px;
+	margin:2px 0;
+	font-size:14px;
+	line-height:20px;
+}
+.devPor a{
+text-decoration:none;
+color:#333;
 }
 #bordasTelaDoJogo{
     display:inline-block;
