@@ -710,6 +710,64 @@ for(var i= 0; i < frames.length; i++){
 				</section>
 
 
+                <section>
+
+                    <section>
+                        <h2> Cenários</h2> 
+                        <p>
+
+                            Uma das técnicas para construir cenários é a técnica
+                            "Tile Maps", nela você tem uma imagem contendo todos as 'celulas'
+                            que o seu cenário pode ter. Logo para construir o seu cenário você deve 
+                            identificar todos estas células e montar seu cenário como se fosse um quebra-cabeça.
+                            Para construir podemos fazer o seguinte:
+                            construimos uma matriz que será o nosso cenário,
+                            cada indice desta matriz irá conter a identificação da 'célula'.
+
+
+
+
+
+                        </p>
+
+
+
+
+                    </section>
+
+                    <section>
+                        <h2> Cenários</h2> 
+                        <h3>Exemplo de uma imagem 'tile map'</h3>
+                        <img src="img/tilemap.png" style='height: 400px'  /> 
+                    </section>
+
+                    <section>
+                        <h2> Cenários</h2> 
+                        <h3>Identificando as 'células'</h3>
+                        <img src="img/tilemap2.png" style='height: 400px'  /> 
+                    </section>
+                    <section>
+                        <h2> Cenários</h2> 
+						
+                        <h3>Montando o cenário</h3>
+						<pre><code>//id da célula -1 não desenha						
+matCenario = [
+	[-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+	[-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+	[-1, -1, -1, -1, -1, 9, 10, 11, -1, -1],
+	[-1, -1, -1, -1, -1, 12, 13, 14, -1, -1],
+	[-1, -1, -1, -1, -1, 12, 13, 14, -1, -1],
+	[-1, -1, -1, -1, -1, 12, 13, 14, -1, -1],
+	[10, 10, 10, 10, 10, 10, 10, 10, 10, 10]
+];</code></pre>
+						<div style="background-color:#fff;display:inline-block">
+                        <img  src="img/tilemap3.png" style='height: 200px'  /> 
+						
+						</div>
+						 <a style="font-size:12px" href="exemplos/exemplo_tile_map.html" target="_blank" >[ver exemplo] </a>
+                    </section>
+                </section>
+
 
 
             </div>
