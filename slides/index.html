@@ -128,7 +128,7 @@
                     <p>
                         O HTML5 permite desenvolvimento de jogos e aplicações de forma acessível, livre e multiplataforma. Presente em diversos dispositivos como Tablets, Smartphones, Smart Tvs e etc, é uma tecnologia livre, de fácil aprendizado, possui incentivos pelas grandes empresas de tecnologia e é tudo gratuito e padronizado.
                         Graças aos recursos oferecidos pelo HTML5, atualmente podemos criar jogos multiplataforma com muitos recursos sem a necessidade de plugins.
-                        Neste curso será apresentado conceitos e técnicas básicas de desenvolvimento de jogos 2D utilizando HTML5.Após os conceitos será implementado um exemplo básico de jogo 2D utilizando todos os conceitos mencionados no curso.
+                        Neste curso será apresentado conceitos e técnicas básicas de desenvolvimento de jogos 2D utilizando HTML5. Após os conceitos será implementado um exemplo básico de jogo 2D.
                     </p>
 
                 </section>
@@ -560,24 +560,154 @@ console.log(coordenada.pageX) ;
 
                 <section>
                     <h2> Conceitos e técnicas</h2> 
-                    <ul>
+                    <ul class="fragment">
 
-                        <li class="fragment">cccc</li>
-                        <li class="fragment">cccc</li>
-                        <li class="fragment">cccc</li>
-                        <li class="fragment">cccc</li>
+                        <li>Sprite</li>
+                        <li>Animação</li>
+                        <li>Colisão</li>
+                        <li>cccc</li>
 
                     </ul>
                 </section>
 
+				<section>
+					<section>
+						<h2>Sprite</h2> 
+						<img src="img/sprite1.jpg" >
+					</section>
 
+					<section>
+						<h2>O que são?</h2> 
+						<p>
+							Sprites são os elementos gráficos que serão exibidos na tela do jogo. Esses elementos representão perssonagens, inimigos, itens,
+							cenarios, etc...
+						</p>
+					</section>
+					
+					<section>
+						<h2>Folha de Sprites</h2> 
+						<p>
+							A folha de sprites é uma imagem contendo todas ou um conjunto de sprites.
+						</p>
+					</section>
+					
+					<section>
+						<h2>Folha de Sprite</h2> 
+						<img src="img/sprite2.jpg" >
+						<p>
+							Esta imagem é uma folha de sprites, ela representa o conjunto de sprites necessárias para representar vizualmente o caminhar do perssonagem (O Máscara).
+						</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Animação</h2> 
+					</section>
+					
+					<section>
+						<h2>Animação</h2> 
+						<p>
+							Uma animação é uma ilusão resultante da troca de imagens em uma velocidade pré determinada. Essa velocidade é representada por
+							FPS (Frames Por Segundos) ou quantas trocas de imagens ocorrerá em um segundo. Para um jogo, considera-se aceitavel uma taxa entre
+							30 e 60 fps.
+						</p>
+					</section>
+					
+					<section>
+						<h2>Animação</h2>
+						<img src="img/sprite3.jpg" >
+						<p>
+							Para animar o caminhar de nosso personagem, devemos fazer as trocas de frames na seguinte sequência:</br>
+							3, 4, 5, 6, 7, 8, 1, 2
+						</p>
+					</section>
 
+					<section>
+						<h2>Animação</h2>
+						<p>
+							Vimos que nossa folha de sprites é um conjunto de imagens, e que em cada troca deve ser exibido uma imagem por vez. Para isso iremos
+							"mapear" nossa folha separando cada imagem.
+						</p>
+						<img src="img/sprite4.jpg" >
+						<p>
+							Como fazer isso?
+						</p>
+					</section>
+					
+					<section>
+						<h2>Animação</h2>
+						<p>
+							Vamos dizer que cada sprite é um frame, para pegar um frame precisamos saber a posíção x e y na folha de sprites e a largura e altura
+							do frame:
+						</p>
+						<img src="img/sprite5.jpg" >
+						<p>
+							Temos então assim:</br>
+							x= 0, y= 0, largura= 20 e altura= 30
+						</p>
+					</section>
+					<section>
+						<h2>Animação</h2>
+						<p>
+							Nosso mapeamento ficará da seginte forma:
+						</p>
+<pre>
+	<code>
+frames[0].x= 0;
+frames[0].y= 0;
+frames[0].largura= 20;
+frames[0].altura= 30;
 
+frames[1].x= 20;
+frames[1].y= 30;
+frames[1].largura= 20;
+frames[1].altura= 30;
 
-
-
-
-
+...
+	</code>
+</pre>	
+					</section>
+					<section>
+						<h2>Animação</h2>
+						<p>
+							Tendo a folha de sprites mapeada, a cada troca de frames saberemos qual posisão da folha renderizar no canvas com o método
+							drawImage():
+						</p>
+<pre>
+	<code>
+for(var i= 0; i < frames.length; i++){
+	ctx.drawImage(folhaSprites, frames[1].x, frames[i].y,
+				frames[i].largura, farmes[i].altura,
+				200, 200);
+}
+	</code>
+</pre>	
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Colisão</h2>
+					</section>
+					
+					<section>
+						<h2>Colisão</h2>
+						<p>
+							Uma colisão acontece quando um objeto "tromba" em outro. Pensando em jogos, a colisão acontece quando objeto está na mesma posição
+							x e y ocupada pelo outro objeto. Esse conceito é importante, talvez é o mais importante no funcionamento de um jogo.
+						</p>
+					</section>
+					<section>
+						<h2>Colisão</h2>
+						<p>
+							Quando acontece uma colisão em um jogo?
+						</p>
+						<ul>
+							<li class="fragment">Quando o Mario "encosta" em um inimigo. Ele morre.</li>
+							<li class="fragment">Quando o Mario "encosta" em um cogumelo. Ele cresce.</li>
+							<li class="fragment">Quando o Mario "encosta" numa parede. Ele é impedido de andar.</li>
+						</ul>
+					</section>
+				</section>
 
 
 
