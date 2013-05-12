@@ -18,8 +18,8 @@ var Fundo = (function(Sprite, Comportamento, GLOBAIS, carregadorRecursos, Elemen
                 duracaoDaAnimacao: 1000,
                 loop: true,
                 frames: [
-                    {x: 3, y: 2174, largura: 506, altura: 363},
-                    {x: 511, y: 2174, largura: 506, altura: 363}
+                    {x: 2, y: 2175, largura: 512, altura: 431},
+                    {x: 517, y: 2176, largura: 514, altura: 431}
 
 
 
