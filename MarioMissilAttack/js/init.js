@@ -71,6 +71,19 @@
 
 
                     Jogo.init(new Teclado());
+
+                    window.addEventListener("blur", function() {
+                        if (!Jogo.pausado) {
+                            document.querySelector("#btnPause").click();
+                        }
+                        // Jogo.pause();
+                    }, false);
+                    /*   window.addEventListener("focus", function() {
+                     Jogo.resume();
+                     }, false);*/
+
+
+
                 }, false);
 
                 document.querySelector("#btnEscala").addEventListener("change", function() {
