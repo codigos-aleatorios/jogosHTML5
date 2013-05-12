@@ -15,7 +15,7 @@ var Sprite = (function(Util, GLOBAIS) {
             comportamentoAtual: null,
             comportamentos: null,
             gravidade: 100,
-            velocidade: 200, // pixels por segundo no eixo x
+            velocidade: 200, // pixels por segundo no eixo x e y
             direcao: Sprite.DIRECAO.PARADO,
             corrigirY: false,
             corrigirX: false,
@@ -302,3 +302,15 @@ var Sprite = (function(Util, GLOBAIS) {
 
     return Sprite;
 })( Util, GLOBAIS);
+/*
+ * o aplicar movimento  da sprite   nao deve ser  chamado no le entrada e ele
+so pode ser chamado automaticamente no Sprite.prototype.executar 
+
+Na entrada  soh devemos  setar direcao e comportamento e la no Sprite.prototype.executar ele ja vai movimentar de acordo
+com a direcao
+
+
+no  Sprite.prototype.executar   devemos colocar por ultimo o 
+ Sprite.prototype.aplicarMovimento
+ * 
+ */
