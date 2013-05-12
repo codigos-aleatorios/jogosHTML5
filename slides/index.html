@@ -143,19 +143,20 @@
                         <li > JavaScript </li>
                         <li > O elemento Canvas </li>
                         <li > O elemento Áudio </li>
-                        <li > Entrada de usuário </li>
+                        <li > Local Storage </li>
+						<li > Entrada de usuário </li>
                         <li > Jogos. Técnicas e Conceitos 
 							<ul>
 								<li > Sprite </li>
 								<li > Animação </li>
 								<li > Colisão </li>
 								<li > Cenário </li>
+								<li > Frames Por Segundo </li>
+								<li > Movimentação Baseada em FPS </li>
+								<li > Game Loop </li> 
 							</ul>
 						</li>
                         
-						<li > Movimentando um personagem no Canvas </li>                        
-                        <li > Implementando áudio no jogo </li>
-                        <li > Implementando um jogo 2D básico. </li>
                         <li > Exemplos de jogos desenvolvidos com HTML5 </li>
                     </ul>
                 </section>
@@ -471,7 +472,10 @@ imgDOM.src = 'imagem.jpg';
                     <!--  ############################################################################## -->
                 </section>
 
-
+				
+				<section>
+					<h2>Local Storage</h2>
+				</section>
 
 
 
@@ -682,7 +686,15 @@ frames[i].largura, farmes[i].altura,
 	</code>
 </pre>	
 					</section>
+					<section>
+						<h2>Animação de Sprite</h2>
+						<img src="img/sprite6.jpg" />
+					</section>
+				
 				</section>
+				
+				
+				
 				<section>
 					<section>
 						<h2>Colisão</h2>
@@ -856,8 +868,35 @@ window.requestAnimationFrame = (function() {
   
 							 																	
 						</section>  
-				  
-				  
+
+						<section>
+							<h2>Movimentação Baseada em FPS</h2>
+							<p>
+								Um carro  movimenta-se em quilometros por hora, em cavas o movimento basea-se em pixels por segundo, logo temos:
+							</p>
+							<pre>
+								<code>
+FPS; // valor adquirida conforme explicado no slide anterior
+var velocidade= 100; //pixel por segundo
+
+var movimento= velocidade / FPS;
+								</code>
+							</pre>
+						</section>
+						
+						<section>
+							<h2>Game Loop</h2>
+							<p>
+								O Game Loop é responsável pelo funcionamento do jogo. Este loop é executado consiste de uma sequência:
+							</p>
+							<ol>
+								<li class="fragment">Ler entrada do usuário</li>
+								<li class="fragment">Atualizar entidades</li>
+								<li class="fragment">Aplicar a lógica</li>
+								<li class="fragment">Desenha o jogo</li>
+							</ol>
+						</section>
+					</section>
 				  
 				  
 				  
