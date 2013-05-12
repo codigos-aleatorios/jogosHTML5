@@ -339,24 +339,13 @@ ctx.stroke();
 
 
 
-
-
-
-
-
-
-
-
-
-
-
                     <section>
                         <h2>Desenhando no canvas</h2>
 
 
                         <pre >
 						<code data-trim>
-
+// drawImage - Desenha uma imagem  na tela
 var imgDOM = new Image();
 imgDOM.onload = function(){
 	ctx.drawImage(imgDOM, dx, dy);
@@ -370,7 +359,31 @@ imgDOM.src = 'imagem.jpg';
                         <div style="background-color:#fff;display:inline-block;">
                             <img  style="height:350px" src="img/canvas5.png"   /></div>
                     </section>
+                    <section>
+                        <h2>Desenhando no canvas</h2>
+                        <h3> Outros métodos  </h3>
+                        <table width="100%"  class="tabelas"><tbody><tr><th scope="col">Método</th><th scope="col">Descrição</th>
+                                </tr> <tr><td><code>save()</code></td><td>
+                                        Salva o estado(estilos e transformações) do contexto em uma pilha.
+                                    </td></tr><tr><td><code>restore()</code></td><td>
+                                        Volta o estado do contexto da pilha.
+                                    </td></tr><tr><td><code>strokeRect()</code></td><td>
+                                        Desenha um retângulo 
+                                    </td></tr><tr><td><code>fillRect()</code></td><td>
+                                        Preenche um retângulo.
+                                    </td></tr>
+                                <tr><td><code> fillText( )</code></td><td>
+                                        Desenha um texto 
+                                    </td></tr>
 
+                                <tr><td><code> rotate( )</code></td><td>
+                                        Rotaciona o    sistema de coordenadas. 
+                                    </td></tr>
+
+                                <tr><td><code>translate()</code></td><td>
+                                        Converte o sistema de coordenadas. 
+                                    </td></tr></tbody></table>
+                    </section>
                     <section>
                         <h2> Referências Canvas</h2>
                         <div style="font-size:21px">
@@ -384,7 +397,23 @@ imgDOM.src = 'imagem.jpg';
 
                         </div>
                     </section>
+
+
                 </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 <!--  ############################################################################## -->
                 <section>
 
@@ -714,7 +743,16 @@ frames[i].largura, farmes[i].altura,
                         <h2>Animação de Sprite</h2>
                         <img src="img/sprite6.jpg" />
                     </section>
-
+                    <section>
+                        <h2>Comportamentos</h2>
+                        <p>
+                          Cada personagem(sprite) pode  assumir um comportamento diferente, 
+                          por exemplo o personagem pode, pular, cair, voar e etc.O comportamento que deve decidir
+                          qual frame deve desenhar, controlar o tempo da animação e poder alterar algumas caracteristicas(direção, velocidade, gravidade) da sprite.
+                            
+                            
+                        </p>
+                    </section>
                 </section>
 
 
@@ -954,7 +992,20 @@ var movimento= velocidade / FPS;
 
 
                 </section>
+                <section>
+                    <h2> Referências  </h2>
+                    <div style="font-size:21px">
+                        <ul>
+                            <li><a  href="http://www.ibm.com/developerworks/views/java/libraryview.jsp?site_id=1&contentarea_by=Java&sort_by=Date&sort_order=2&start=1&end=8&topic_by=&product_by=&type_by=All%20Types&show_abstract=true&search_by=HTML5%20game%20development:&industry_by=&series_title_by=">IBM </a></li>
+                            <li><a  href="https://developer.mozilla.org/en-US/docs/HTML/Canvas/Tutorial">Mozilla </a></li>
 
+                            <li><a  href="http://www.w3.org/TR/2dcontext/">W3C </a></li>
+                            <li><a  href="http://www.html5canvastutorials.com/">html5canvastutorials </a></li>
+
+                        </ul>
+
+                    </div>
+                </section>
                 <section>
                     <h2> GameOver</h2>
 

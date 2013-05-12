@@ -32,6 +32,8 @@ var Inimigo = (function(Comportamento, carregadorRecursos, Sprite, GLOBAIS, Elem
 
         },
         atualizaComportamento: function(fps) {
+            //pensar melhor esta logica poderia ser feita sobrepondo o executar do comportamento
+            //criando propriedades extra para cada tipo de comportamento  de cada tipo de inimigo
             var agora = Date.now();
             var tempoDecorridoDesteInicio = agora - this.tempoQuandoIniciou;
 
@@ -53,22 +55,14 @@ var Inimigo = (function(Comportamento, carregadorRecursos, Sprite, GLOBAIS, Elem
                 } else {
                     this.sprite.comportamentoAtual.modificadorDeGravidade = 0.3;
                 }
-                this.sprite.x -= (100) / fps;
+                this.sprite.x -= this.sprite.velocidade / fps;
             } else if (this.tipo === "InimigoTartaruga") {
                 this.sprite.aplicarMovimentoX(fps);
             } else if (this.tipo === "InimigoTartarugaAzul") {
-
-
                 if (tempoDecorridoDesteInicio >= this.tempoAnimacaoComportamentos) {
                     this.setDirecaoCimaBaixoDiagonal(agora);
                 }
-
                 this.sprite.aplicarMovimento(fps);
-
-
-
-
-
             } else if (this.tipo === "InimigoBalaDeCanhaoGigante") {
                 this.sprite.x -= Math.floor(this.sprite.velocidade / fps);
             }

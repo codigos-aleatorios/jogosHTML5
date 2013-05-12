@@ -10,7 +10,7 @@ var MarioVoador = (function(ElementoAudio, Comportamento, GLOBAIS, Sprite) {
         sprite: null,
         sons: null,
         comportamentos: {},
-        estrelas: 1, //coloquei 8  soh pra teste de segurar shift
+        estrelas: 1, 
         tempoDoUltimoTiro: 0,
         tipoTiro: 1,
         quantidadeTiro: 1,
