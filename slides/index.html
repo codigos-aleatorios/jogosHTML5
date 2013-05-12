@@ -222,6 +222,15 @@
 
                         </p>
                     </section>
+							<section>
+								<h2>Canvas</h2>
+								<h3>Compatibilidade</h3>
+                               <img src="img/suportecanvas.png" style='height: 400px'  /> 
+ 
+							 																	
+						</section>
+					
+					
                     <section>
                         <h2>Sistemas de Coordenadas</h2>
                         <p>
@@ -384,7 +393,7 @@ imgDOM.src = 'imagem.jpg';
                         <p>Para usar o audio use a tag &lt;audio&gt; </p>
                         <pre >
 <code data-trim>
-<audio src="audio.ogg"></audio>
+&lt;audio src="audio.ogg"&gt;&lt;/audio&gt;
 </code>						
                         </pre>
 
@@ -665,11 +674,11 @@ frames[1].altura= 30;
 						</p>
 <pre>
 	<code>
-	
-	ctx.drawImage(folhaSprites, frames[indiceAtual].x, frames[i].y,
-				frames[i].largura, farmes[i].altura,
-				200, 200);
-}
+
+ctx.drawImage(folhaSprites, frames[indiceAtual].x, frames[i].y,
+frames[i].largura, farmes[i].altura,
+200, 200);
+
 	</code>
 </pre>	
 					</section>
@@ -765,6 +774,118 @@ matCenario = [
                 </section>
 
 
+
+  <section>   <section> 
+                        <h2> requestAnimationFrame</h2> 
+                     
+                        <p>
+							requestAnimationFrame é um método (temporizador)  mais eficiente para usar quando
+							deseja-se fazer alguma animação pois quem  decide o tempo quando ele executará é próprio  navegador
+							evitando ciclos de CPU desperdiçado, alé disso ele só é executado quando o aba do navegador está ativa evitando processos desnecessários.
+						
+						</p>
+						<pre><code>
+requestAnimationFrame(function(){
+
+ //será executado apenas uma vez  
+});
+						
+						</code></pre>
+						
+						</section>
+												<section>
+								<h2>requestAnimationFrame</h2>
+								<h3>Compatibilidade</h3>
+                               <img src="img/suportera.png" style='height: 400px'  /> 
+ 
+							 																	
+						</section>
+						
+						
+						
+						<section>
+								<h2>requestAnimationFrame</h2>
+								<h3>Compatibilidade</h3>
+                             
+								<pre><code>					 						
+window.requestAnimationFrame = (function() {
+	return window.requestAnimationFrame ||
+			window.webkitRequestAnimationFrame ||
+			window.mozRequestAnimationFrame ||
+			window.oRequestAnimationFrame ||
+			window.msRequestAnimationFrame ||
+			function(callback) {
+				window.setTimeout(function() {
+					callback(+new Date);
+				}, 1000 / 60);
+			};
+})();
+								</code></pre>																		
+						</section>
+						
+                    </section>
+                  
+
+				  
+				  
+				  
+				  
+				    <section>
+								<h2>FPS</h2>
+								<h3>Frames por Segundo</h3>
+                              
+  <p>FPS é a quandidade de vezes em que a tela foi desenhada em um segundo.Em um jogo o ideal é  ter uma taxa entre 30 à 60 fps. </p>
+  <pre><code>
+//considerando tempoDecorridoDesdeUltimoLoop
+// sendo o tempo desde o ultimo loop
+// estimativa  aproximada:
+// se estiver executando a cada loop 
+//o tempo de 'tempoDecorridoDesdeUltimoLoop'
+// então  ele executara 1000/tempoDecorridoDesdeUltimoLoop 
+//vezes em um segundo   
+// Por exemplo:
+// se a cada loop  demora 16ms 
+//então em 1 segundo (1000ms) ele  executara 60 vezes
+// 16*x = 1000
+// x =  1000/16
+// x  = 60 fps
+
+ var fps = (1000 / tempoDecorridoDesdeUltimoLoop);
+  
+  </code></pre>	
+  
+							 																	
+						</section>  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
 
             </div>
 

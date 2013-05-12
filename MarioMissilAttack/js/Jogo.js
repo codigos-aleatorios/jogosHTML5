@@ -483,15 +483,14 @@ var Jogo = (function(MarioVoador, Sprite, Explosao, GLOBAIS, Inimigo, Fundo, car
 
         },
         calculaFPS: function(tempoDecorridoDesdeUltimoLoop) {
-            //taxa de fps  neste momento
-            //estimativa  aproximada:
-            //se estiver executando 'tempoDecorridoDesdeUltimoLoop' por vez em 1 segundo
-            //// entao  ele executara 1000/tempoDecorridoDesdeUltimoLoop a cada loop
-            //  1   == 16ms
-            //  x   ==  1000ms
-            /*
-             16x = 1000
-             x =  1000 /16*/
+            // estimativa  aproximada:
+            // se estiver executando a cada loop o tempo de 'tempoDecorridoDesdeUltimoLoop'
+            // então  ele executara 1000/tempoDecorridoDesdeUltimoLoop vezes em um segundo   
+             // Por exemplo:
+		     // se a cada loop  demora 16ms então em 1 segundo (1000ms) ele  executara 60 vezes
+             // 16*x = 1000
+             // x =  1000/16
+			 // x  = 60 fps
             if (tempoDecorridoDesdeUltimoLoop > 0) {
                 this.fps = (1000 / tempoDecorridoDesdeUltimoLoop);
             
