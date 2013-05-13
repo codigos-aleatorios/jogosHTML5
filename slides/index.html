@@ -680,6 +680,49 @@ ctx.scale(-1, 1);
                       
                     </section>
 					
+					  <section>
+
+					<h2>Carregador de recursos</h2> 
+
+				     <p>
+					 Um jogo só pode iniciar quando todos os recursos (imagens, audio, e etc) forem
+					 carregados, pois caso você tente usar um recurso que ainda não está no cache do navegador ocorrerá um erro,
+					 por exemplo se  você tentar desenhar uma imagem no canvas que ainda não foi carregada ocorrerá um erro. O ideal é você ter o controle de tudo o que está sendo carregado para que você possa criar algum tipo de barra de progresso.
+					 
+					 </p>
+
+					</section>
+
+					
+					  <section>
+
+					<h2>Carregador de recursos</h2> 
+					
+					<pre>
+<code>
+//para carregar imagem
+var img = new Image();
+img.onload = function(){
+//carregou
+};
+img.src="imagem.jpg"
+//para carregar audio
+var audio = document.createElement("audio");
+audio.preload = "auto";
+audio.addEventListener("canplaythrough", function() {
+//carregou
+}, false);
+audio.src = "audio.ogg";
+audio.load();
+</code>
+
+</pre>
+										</section>
+					
+					
+					
+					
+					
 					
 					
                 </section>
