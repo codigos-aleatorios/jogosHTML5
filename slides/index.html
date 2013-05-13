@@ -1143,48 +1143,54 @@ var movimento= velocidade / FPS;
         <script src="js/reveal.min.js"></script>
 
         <script>
+            var cliente = window.location.search.indexOf("cliente")>=0;
+            var controls = true;
+			var multiplex = null;
+			var dependencies = [
+				{src: 'lib/js/classList.js', condition: function() {
+						return !document.body.classList;
+					}},
+				{src: 'plugin/markdown/marked.js', condition: function() {
+						return !!document.querySelector('[data-markdown]');
+					}},
+				{src: 'plugin/markdown/markdown.js', condition: function() {
+						return !!document.querySelector('[data-markdown]');
+					}},
+				{src: 'plugin/highlight/highlight.js', async: true, callback: function() {
+						hljs.initHighlightingOnLoad();
+					}},
+				{src: 'plugin/zoom-js/zoom.js', async: true, condition: function() {
+						return !!document.body.classList;
+					}},
+				{src: 'plugin/notes/notes.js', async: true, condition: function() {
+						return !!document.body.classList;
+					}}               
 
-
+			];
+				
+			if(cliente){
+			    controls= false;
+			    dependencies.push({src: 'http://cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.10/socket.io.min.js', async: true},
+                    {src: 'plugin/multiplex/client.js', async: true});
+				multiplex= { 
+					secret: null, // Obtained from the socket.io server. Gives this (the master) control of the presentation
+					id: 'ce1eacd348407946', // Obtained from socket.io server
+					url: 'revealjs.jit.su:80' // Location of socket.io server
+				}			
+			}
+				
+			
             // https://github.com/hakimel/reveal.js#configuration
             Reveal.initialize({
-                controls: true,
+                controls: controls,
                 progress: true,
                 history: true,
                 center: true,
                 theme: Reveal.getQueryHash().theme || 'default', // available themes are in /css/theme
                 transition: Reveal.getQueryHash().transition || 'cube',
-                multiplex: {
-                    //{"secret":"13680795181571946425","socketId":"4b30481affccc1c6"} 
-                    // Example values. Generate your own.
-                    secret: '13680795181571946425', // Obtained from the socket.io server. Gives this (the master) control of the presentation
-                    id: '4b30481affccc1c6', // Obtained from socket.io server
-                    url: 'revealjs.jit.su:80' // Location of socket.io server
-                },
-                // Optional libraries used to extend on reveal.js
-                dependencies: [
-                    {src: 'lib/js/classList.js', condition: function() {
-                            return !document.body.classList;
-                        }},
-                    {src: 'plugin/markdown/marked.js', condition: function() {
-                            return !!document.querySelector('[data-markdown]');
-                        }},
-                    {src: 'plugin/markdown/markdown.js', condition: function() {
-                            return !!document.querySelector('[data-markdown]');
-                        }},
-                    {src: 'plugin/highlight/highlight.js', async: true, callback: function() {
-                            hljs.initHighlightingOnLoad();
-                        }},
-                    {src: 'plugin/zoom-js/zoom.js', async: true, condition: function() {
-                            return !!document.body.classList;
-                        }},
-                    {src: 'plugin/notes/notes.js', async: true, condition: function() {
-                            return !!document.body.classList;
-                        }},
-                    {src: 'http://cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.10/socket.io.min.js', async: true},
-                    {src: 'plugin/multiplex/master.js', async: true}
-                    // { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
-                    // { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
-                ]
+                multiplex: multiplex,
+                
+                dependencies: dependencies
             });
 
         </script>
