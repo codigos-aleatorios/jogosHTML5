@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta  charset="utf-8">
+        <title>exemplo </title>
+       
+		 <style>
+		 canvas{
+			border:1px solid #000;
+		 }
+		 </style>
+ 
+		<script src="js/exemploEspelha.js"></script>
+		<script>			
+			window.addEventListener("DOMContentLoaded" , function(){
+				exemploEspelha.init();		
+			},false);		
+		</script>
+    </head>
+    <body>
+	Original:<br /><img src="img/sprite1.jpg"  />   <br />
+	Espelhando apenas 1 frame da sprite  via código: <br />
+	
+         <canvas id="elementoCanvas"   ></canvas>
+    </body>
+</html>

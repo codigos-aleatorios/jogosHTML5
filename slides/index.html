@@ -381,7 +381,7 @@ imgDOM.src = 'imagem.jpg';
                                     </td></tr>
 
                                 <tr><td><code>translate()</code></td><td>
-                                        Converte o sistema de coordenadas. 
+                                        Converte o sistema de coordenadas. (define onde será o 0,0 do canvas)
                                     </td></tr></tbody></table>
                     </section>
                     <section>
@@ -654,6 +654,77 @@ console.log(coordenada.pageX) ;
                             Esta imagem é uma folha de sprites, ela representa o conjunto de sprites necessárias para representar visualmente o caminhar do personagem (O Máscara).
                         </p>
                     </section>
+					
+					
+					<section>
+                        <h2>Efeito espelho</h2> 
+                         
+                        <p>
+                           As vezes queremos que uma sprite seja desenhanda no lado oposto ou seja espelhada, por exemplo personagem andando para
+						   frente olha para direita e quando esta andando para o lado oposto ele deve estar olhando para esquerda.Ao invés de 
+						   criarmos uma outra imagem sprite podemos espelhar a imagem via código com o método <code>scale()</code> passando escala -1 e ajustando o sistema 
+						   de coordenada com o método <code>translate()</code>
+                        </p>
+                    </section>
+					 <section>
+                        <h2>Efeito espelho</h2> 
+                         
+                        <img src="img/espelha.png" style="height:300px"  />
+                   <pre>
+<code>
+ctx.translate( largura + (x * 2), 0);
+ctx.scale(-1, 1);
+</code>
+</pre>
+<a  target="_blank" href="exemplos/exemplo_espelha.html">[ver exemplo]</a>
+                      
+                    </section>
+					
+					  <section>
+
+					<h2>Carregador de recursos</h2> 
+
+				     <p>
+					 Um jogo só pode iniciar quando todos os recursos (imagens, audio, e etc) forem
+					 carregados, pois caso você tente usar um recurso que ainda não está no cache do navegador ocorrerá um erro,
+					 por exemplo se  você tentar desenhar uma imagem no canvas que ainda não foi carregada ocorrerá um erro. O ideal é você ter o controle de tudo o que está sendo carregado para que você possa criar algum tipo de barra de progresso.
+					 
+					 </p>
+
+					</section>
+
+					
+					  <section>
+
+					<h2>Carregador de recursos</h2> 
+					
+					<pre>
+<code>
+//para carregar imagem
+var img = new Image();
+img.onload = function(){
+//carregou
+};
+img.src="imagem.jpg"
+//para carregar audio
+var audio = document.createElement("audio");
+audio.preload = "auto";
+audio.addEventListener("canplaythrough", function() {
+//carregou
+}, false);
+audio.src = "audio.ogg";
+audio.load();
+</code>
+
+</pre>
+										</section>
+					
+					
+					
+					
+					
+					
+					
                 </section>
                 <section>
                     <section>
