@@ -119,7 +119,7 @@ var carregadorRecursos = (function(w) {
                     //console.log("RECURSOS" , "carregando " + vet[ i ]);
                     var src = vet[ i ];
                     if (configRecursos.forcarCarregamento) {
-                        //isto tenta garantir que sempre o MarioVoadorgador ira fazer a requisicao
+                        //forca um novo cache 
                         var semCache = "semCache=" + ((Date.now() + Math.random()) + "_" + i);
                         src += ((src.indexOf("?") !== -1) ? ("&" + semCache) : "?" + semCache);
                     }
