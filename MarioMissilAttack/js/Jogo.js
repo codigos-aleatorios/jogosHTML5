@@ -40,9 +40,7 @@ var Jogo = (function(MarioVoador, Sprite, Explosao, GLOBAIS, Inimigo, Fundo, car
 
             if (agora - this.ultimoInimigo > (Math.floor((Math.random() * tempo) + tempo))) {
                 this.ultimoInimigo = agora;
-                //---
 
-                //for (var i = 0; i < this.nivel; i++) {
 
                 if (this.nivel === 1) {
                     this.inimigos.push(Inimigo.criaInimigoTartaruga());
@@ -57,7 +55,7 @@ var Jogo = (function(MarioVoador, Sprite, Explosao, GLOBAIS, Inimigo, Fundo, car
                     this.inimigos.push(Inimigo.criaInimigoParaQueda());
                     this.inimigos.push(Inimigo.criaInimigoTartarugaAzul());
                 }
-                //}
+            
             }
 
         },
@@ -120,21 +118,14 @@ var Jogo = (function(MarioVoador, Sprite, Explosao, GLOBAIS, Inimigo, Fundo, car
                 }
 
                 if (t.estaPressionada(t.teclas.ESPACO)) {
-                    //if( MarioVoador.sprite.comportamentoAtual === MarioVoador.comportamentos.parado || MarioVoador.sprite.comportamentoAtual === MarioVoador.comportamentos.paraDireita)
-                    //{
                     MarioVoador.atirar();
-                    //}
-
                 }
 
                 if (t.estaPressionada(t.teclas.DIREITA)) {
                     t.soltaTecla(t.teclas.ESQUERDA);
                     MarioVoador.sprite.setDirecao(Sprite.DIRECAO.DIREITA);
                     MarioVoador.sprite.aplicarMovimentoX(fps);
-
                     if (MarioVoador.comportamentos.paraDireita !== MarioVoador.sprite.comportamentoAtual) {
-
-                        //MarioVoador.sons.pulando.play();
                         MarioVoador.sprite.setComportamentoAtual(MarioVoador.comportamentos.paraDireita);
                     }
 
@@ -143,8 +134,6 @@ var Jogo = (function(MarioVoador, Sprite, Explosao, GLOBAIS, Inimigo, Fundo, car
                     MarioVoador.sprite.setDirecao(Sprite.DIRECAO.ESQUERDA);
                     MarioVoador.sprite.aplicarMovimentoX(fps);
                     if (MarioVoador.comportamentos.paraEsquerda !== MarioVoador.sprite.comportamentoAtual) {
-
-                        //MarioVoador.sons.pulando.play();
                         MarioVoador.sprite.setComportamentoAtual(MarioVoador.comportamentos.paraEsquerda);
                     }
 
@@ -153,8 +142,6 @@ var Jogo = (function(MarioVoador, Sprite, Explosao, GLOBAIS, Inimigo, Fundo, car
                     MarioVoador.sprite.setDirecao(Sprite.DIRECAO.CIMA);
                     MarioVoador.sprite.aplicarMovimentoY(fps);
                     if (MarioVoador.comportamentos.paraCima !== MarioVoador.sprite.comportamentoAtual) {
-
-                        //MarioVoador.sons.pulando.play();
                         MarioVoador.sprite.setComportamentoAtual(MarioVoador.comportamentos.paraCima);
                     }
 
@@ -163,12 +150,9 @@ var Jogo = (function(MarioVoador, Sprite, Explosao, GLOBAIS, Inimigo, Fundo, car
                     MarioVoador.sprite.setDirecao(Sprite.DIRECAO.BAIXO);
                     MarioVoador.sprite.aplicarMovimentoY(fps);
                     if (MarioVoador.comportamentos.paraBaixo !== MarioVoador.sprite.comportamentoAtual) {
-
                         MarioVoador.sprite.setComportamentoAtual(MarioVoador.comportamentos.paraBaixo);
                     }
-
                 }
-
                 if (MarioVoador.sprite.direcao === Sprite.DIRECAO.PARADO &&
                         MarioVoador.comportamentos.parado !== MarioVoador.sprite.comportamentoAtual) {
                     MarioVoador.sprite.setComportamentoAtual(MarioVoador.comportamentos.parado);
@@ -178,10 +162,7 @@ var Jogo = (function(MarioVoador, Sprite, Explosao, GLOBAIS, Inimigo, Fundo, car
                 //tela de inicio
                 if (t.estaPressionada(t.teclas.ENTER)) {
                     this.iniciarJogo();
-
                 }
-
-
             }
         },
         aplicaEscala: function(escala) {
@@ -331,27 +312,19 @@ var Jogo = (function(MarioVoador, Sprite, Explosao, GLOBAIS, Inimigo, Fundo, car
             var i = 0;
             var totalInimigos = this.inimigos.length;
             while (i < totalInimigos) {
-
                 if (this.inimigos[i].tipo === "InimigoTartarugaAzul")
                 {
                     var altura = this.inimigos[i].sprite.comportamentoAtual.frames[this.inimigos[i].sprite.comportamentoAtual.indiceFrameAtual].altura;
                     var objColisao = this.inimigos[i].sprite.verificaSeColidiuLimitesDoCanvas();
-
-
                     if (objColisao.baixo || objColisao.topo) {
                         if (objColisao.topo) {
                             this.inimigos[i].sprite.y = 0;
-
                         }
                         if (objColisao.baixo) {
                             this.inimigos[i].sprite.y = GLOBAIS.ALTURA_CANVAS - altura;
-
-
                         }
                         this.inimigos[i].setDirecaoCimaBaixoDiagonal(Date.now());
                     }
-
-
                 }
                 if (this.inimigos[i].sprite.verificaSeUltrapassouLimitesDoCanvas({baixo: true, esquerda: true})) {
                     this.inimigos.splice(i, 1);
@@ -500,9 +473,8 @@ var Jogo = (function(MarioVoador, Sprite, Explosao, GLOBAIS, Inimigo, Fundo, car
             // se estiver executando a cada loop o tempo de 'tempoDecorridoDesdeUltimoLoop'
             // então  ele executara 1000/tempoDecorridoDesdeUltimoLoop vezes em um segundo   
             // Por exemplo:
-            // se a cada loop  demora 16ms então em 1 segundo (1000ms) ele  executara 60 vezes
-            // 16*x = 1000
-            // x =  1000/16
+            // se a cada loop  demora 16ms então em 1 segundo (1000ms) ele  executara 60 vezes           
+            // x =  1000/16  //quantas  vezes durante um segundo  executando cada loop a 16ms
             // x  = 60 fps
             if (tempoDecorridoDesdeUltimoLoop > 0) {
                 this.fps = (1000 / tempoDecorridoDesdeUltimoLoop);
@@ -568,7 +540,6 @@ var Jogo = (function(MarioVoador, Sprite, Explosao, GLOBAIS, Inimigo, Fundo, car
         tempoQuedesenhouFPS: 0,
         ultimoFPSDesenhado: 0,
         desenhaFPS: function() {
-
             var fps = this.ultimoFPSDesenhado;
             var agora = Date.now();
             if (agora - this.tempoQuedesenhouFPS > 100) {
