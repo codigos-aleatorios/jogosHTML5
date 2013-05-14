@@ -1017,13 +1017,17 @@ window.requestAnimationFrame = (function() {
 //considerando tempoDecorridoDesdeUltimoLoop
 // sendo o tempo desde o ultimo loop
 // estimativa  aproximada:
-// se estiver executando a cada loop o tempo de 'tempoDecorridoDesdeUltimoLoop'
-// então  ele executara 1000/tempoDecorridoDesdeUltimoLoop vezes em um segundo   
+// se estiver executando a cada 
+//loop o tempo de 'tempoDecorridoDesdeUltimoLoop'
+// então  ele executara 1000/tempoDecorridoDesdeUltimoLoop 
+//vezes em um segundo   
 // Por exemplo:
-// se a cada loop  demora 16ms então em 1 segundo (1000ms) ele  executara 60 vezes           
-// x =  1000/16  //quantas  vezes durante um segundo  executando cada loop a 16ms
+// se a cada loop  demora 16ms 
+//então em 1 segundo (1000ms) ele  executara 60 vezes           
+// x =  1000/16  //quantas  vezes
+// durante um segundo  executando cada loop a 16ms
 // x  = 60 fps
-
+//----------------------------------------------------
  var fps = (1000 / tempoDecorridoDesdeUltimoLoop);
   
   </code></pre>	
