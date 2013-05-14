@@ -6,6 +6,7 @@
 
         <title>Introdução ao desenvolvimento de jogos com HTML5</title>
 
+        <meta property="og:image" content="img/mario.png"/>
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
@@ -546,17 +547,17 @@ localStorage.getItem("pontos");///
                         <pre>   <code>   
 //e.which é o codigo da tecla            
 document.addEventListener("keydown",function(e){
-console(e.type + e.which) ;
+console.log(e.type + e.which) ;
 
 },false);
 document.addEventListener("keyup",function(e){
 
-console(e.type + e.which) ;
+console.log(e.type + e.which) ;
 
 },false);  
 document.addEventListener("keypress",function(e){
 
-console(e.type + e.which) ;
+console.log(e.type + e.which) ;
 
 },false);  </code>
                         </pre>
@@ -835,8 +836,8 @@ frames[1].altura= 30;
                         <pre>
 	<code>
 
-ctx.drawImage(folhaSprites, frames[indiceAtual].x, frames[i].y,
-frames[i].largura, farmes[i].altura,
+ctx.drawImage(folhaSprites, frames[indiceAtual].x, frames[indiceAtual].y,
+frames[indiceAtual].largura, farmes[indiceAtual].altura,
 200, 200);
 
 	</code>
@@ -1073,7 +1074,7 @@ var movimento= velocidade / FPS;
 					                    <section>
                         <h2> Super Mario Míssil Attack</h2>
 
-                        <a href="http://codigos-aleatorios.github.io/jogosHTML5/MarioMissilAttack/index.html/"  >Super Mario Míssil Attack </a><br >
+                        <a href="http://codigos-aleatorios.github.io/jogosHTML5/MarioMissilAttack/index.html"  >Super Mario Míssil Attack </a><br >
                        <img src="img/mario.png"   /> 
 
 
